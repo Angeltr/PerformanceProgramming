@@ -1,0 +1,6 @@
+Initial program timing with no optimizations (-O0) for 10 timesteps:
+ 
+Total IO time          = 1.815891 seconds
+Total computation time = 74.443159 seconds
+Total program time     = 76.259864 seconds
+
