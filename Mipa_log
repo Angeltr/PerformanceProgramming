@@ -1,0 +1,659 @@
+evolve:
+     25, IPA: 17 conditional branches removed
+     38, Conditional removed
+     46, Conditional removed
+         Memory zero idiom, loop replaced by call to __c_mzero8
+     50, Conditional removed
+     54, Conditional removed
+     59, Conditional removed
+     60, Conditional removed
+     68, Conditional removed
+     70, Conditional removed
+     78, Conditional removed
+         Memory zero idiom, loop replaced by call to __c_mzero8
+     81, Conditional removed
+     84, Conditional removed
+     92, Conditional removed
+     94, Conditional removed
+    115, Conditional removed
+    116, Conditional removed
+    122, Conditional removed
+    123, Conditional removed
+pgcc -Mipa=fast,inline -Minfo=all -Mneginfo=all   -c -o control.o control.c
+main:
+     16, IPA: 4 conditional branches removed
+     54, Conditional removed
+     72, Conditional removed
+     87, Conditional removed
+    110, Conditional removed
+pgcc -Mipa=fast,inline -Minfo=all -Mneginfo=all   -c -o util.o util.c
+wind_force:
+     14, IPA: 1 conditional branches removed
+     23, Conditional removed
+pgcc -Mipa=fast,inline -Minfo=all -Mneginfo=all  -o MD  MD.o control.o util.o -lm
+IPA: Recompiling MD.o: stale object file
+evolve:
+      0, Variable visc with 1 stars always points to allocated memory, including allocation site 4
+         Global variable visc is safe (not modified in this routine or any routine called from it)
+         Pointer visc points to memory that is aligned on a 16 boundary
+         Global pointer target is always quad-aligned
+         Variable r with 1 stars always points to allocated memory, including allocation site 1
+         Global variable r is safe (not modified in this routine or any routine called from it)
+         Pointer r points to memory that is aligned on a 16 boundary
+         Global pointer target is always quad-aligned
+         Variable mass with 1 stars always points to allocated memory, including allocation site 3
+         Global variable mass is safe (not modified in this routine or any routine called from it)
+         Pointer mass points to memory that is aligned on a 16 boundary
+         Global pointer target is always quad-aligned
+         Variable delta_r with 1 stars always points to allocated memory, including allocation site 2
+         Global variable delta_r is safe (not modified in this routine or any routine called from it)
+         Pointer delta_r points to memory that is aligned on a 16 boundary
+         Global pointer target is always quad-aligned
+         Function printf is safe (does not read/write globals)
+         Function visc_force does not read any global variables
+         Function visc_force does not read any file static variables
+         Function visc_force does not write any file static variables
+         Function wind_force does not read any global variables
+         Function wind_force does not write any global variables
+         Function wind_force does not read any file static variables
+         Function wind_force does not write any file static variables
+         Function add_norm does not read any global variables
+         Function add_norm does not write any global variables
+         Function add_norm does not read any file static variables
+         Function add_norm does not write any file static variables
+         Function force does not write to any of its arguments
+         Function force does not read any global variables
+         Function force does not write any global variables
+         Function force does not read any file static variables
+         Function force does not write any file static variables
+         Global variable collisions is safe (not modified) by any call in this routine
+         Dummy argument converted to local variable
+         Dummy argument converted to local variable
+         Dummy argument converted to local variable
+         Dummy argument converted to local variable
+     25, IPA: 81 pointer targets disambiguated
+         IPA: 87 global variables eligible for optimization
+         IPA: 22 conditional branches removed
+     38, Conditional removed
+     39, visc_force inlined, size=6 (IPA) file util.c (5)
+           8, Conditional removed
+     43, wind_force inlined, size=26 (IPA) file util.c (14)
+          18, Conditional removed
+          23, Conditional removed
+     46, Conditional removed
+         Memory zero idiom, loop replaced by call to __c_mzero8
+     50, Conditional removed
+     51, add_norm inlined, size=6 (IPA) file util.c (34)
+          37, Conditional removed
+     54, Conditional removed
+     59, Conditional removed
+     60, Conditional removed
+     62, force inlined, size=3 (IPA) file util.c (43)
+     68, Conditional removed
+     70, Conditional removed
+     78, Conditional removed
+         Memory zero idiom, loop replaced by call to __c_mzero8
+     81, Conditional removed
+     82, add_norm inlined, size=6 (IPA) file util.c (34)
+          37, Conditional removed
+     84, Conditional removed
+     92, Conditional removed
+     94, Conditional removed
+     98, force inlined, size=3 (IPA) file util.c (43)
+    100, force inlined, size=3 (IPA) file util.c (43)
+    104, force inlined, size=3 (IPA) file util.c (43)
+    106, force inlined, size=3 (IPA) file util.c (43)
+    115, Conditional removed
+    116, Conditional removed
+    122, Conditional removed
+    123, Conditional removed
+IPA: Recompiling control.o: stale object file
+main:
+      0, Variable visc with 1 stars always points to allocated memory, including allocation site 4
+         Pointer visc points to memory that is aligned on a 16 boundary
+         Global pointer target is always quad-aligned
+         Variable mass with 1 stars always points to allocated memory, including allocation site 3
+         Pointer mass points to memory that is aligned on a 16 boundary
+         Global pointer target is always quad-aligned
+         Variable r with 1 stars always points to allocated memory, including allocation site 1
+         Pointer r points to memory that is aligned on a 16 boundary
+         Global pointer target is always quad-aligned
+         Variable delta_r with 1 stars always points to allocated memory, including allocation site 2
+         Pointer delta_r points to memory that is aligned on a 16 boundary
+         Global pointer target is always quad-aligned
+         Function second does not write to any of its arguments
+         Function second does not read any global variables
+         Function second does not write any global variables
+         Function second does not read any file static variables
+         Function second does not write any file static variables
+         Function atoi is pure (no global read/write, its result depends only on its argument values)
+         Function calloc is safe (does not read/write globals)
+         Function calloc returns newly allocated memory
+         Function fopen is safe (does not read/write globals)
+         Function evolve does not write to any of its arguments
+         Function evolve does not read any file static variables
+         Function evolve does not write any file static variables
+         Function printf is safe (does not read/write globals)
+         Function visc_force does not read any global variables
+         Function visc_force does not read any file static variables
+         Function visc_force does not write any file static variables
+         Function wind_force does not read any global variables
+         Function wind_force does not write any global variables
+         Function wind_force does not read any file static variables
+         Function wind_force does not write any file static variables
+         Function add_norm does not read any global variables
+         Function add_norm does not write any global variables
+         Function add_norm does not read any file static variables
+         Function add_norm does not write any file static variables
+         Function force does not write to any of its arguments
+         Function force does not read any global variables
+         Function force does not write any global variables
+         Function force does not read any file static variables
+         Function force does not write any file static variables
+         Function fprintf is safe (does not read/write globals)
+         Global variable pos is safe (not modified) over a call to second
+         Global variable pos is safe (not modified) over a call to gettimeofday
+         Global variable pos is safe (not modified) over a call to atoi
+         Global variable pos is safe (not modified) over a call to calloc
+         Global variable pos is safe (not modified) over a call to fopen
+         Global variable pos is safe (not modified) over a call to perror
+         Global variable pos is safe (not modified) over a call to exit
+         Global variable pos is safe (not modified) over a call to __isoc99_fscanf
+         Global variable pos is safe (not modified) over a call to fclose
+         Global variable pos is safe (not modified) over a call to printf
+         Global variable pos is safe (not modified) over a call to add_norm
+         Global variable pos is safe (not modified) over a call to force
+         Global variable pos is safe (not modified) over a call to sprintf
+         Global variable pos is safe (not modified) over a call to fprintf
+         Global variable vel is safe (not modified) over a call to second
+         Global variable vel is safe (not modified) over a call to gettimeofday
+         Global variable vel is safe (not modified) over a call to atoi
+         Global variable vel is safe (not modified) over a call to calloc
+         Global variable vel is safe (not modified) over a call to fopen
+         Global variable vel is safe (not modified) over a call to perror
+         Global variable vel is safe (not modified) over a call to exit
+         Global variable vel is safe (not modified) over a call to __isoc99_fscanf
+         Global variable vel is safe (not modified) over a call to fclose
+         Global variable vel is safe (not modified) over a call to printf
+         Global variable vel is safe (not modified) over a call to add_norm
+         Global variable vel is safe (not modified) over a call to force
+         Global variable vel is safe (not modified) over a call to sprintf
+         Global variable vel is safe (not modified) over a call to fprintf
+         Global variable f is safe (not modified) over a call to second
+         Global variable f is safe (not modified) over a call to gettimeofday
+         Global variable f is safe (not modified) over a call to atoi
+         Global variable f is safe (not modified) over a call to calloc
+         Global variable f is safe (not modified) over a call to fopen
+         Global variable f is safe (not modified) over a call to perror
+         Global variable f is safe (not modified) over a call to exit
+         Global variable f is safe (not modified) over a call to __isoc99_fscanf
+         Global variable f is safe (not modified) over a call to fclose
+         Global variable f is safe (not modified) over a call to printf
+         Global variable f is safe (not modified) over a call to add_norm
+         Global variable f is safe (not modified) over a call to force
+         Global variable f is safe (not modified) over a call to sprintf
+         Global variable f is safe (not modified) over a call to fprintf
+         Global variable visc is safe (not modified) by any call in this routine
+         Global variable mass is safe (not modified) by any call in this routine
+         Global variable delta_x is safe (not modified) over a call to second
+         Global variable delta_x is safe (not modified) over a call to gettimeofday
+         Global variable delta_x is safe (not modified) over a call to atoi
+         Global variable delta_x is safe (not modified) over a call to calloc
+         Global variable delta_x is safe (not modified) over a call to fopen
+         Global variable delta_x is safe (not modified) over a call to perror
+         Global variable delta_x is safe (not modified) over a call to exit
+         Global variable delta_x is safe (not modified) over a call to __isoc99_fscanf
+         Global variable delta_x is safe (not modified) over a call to fclose
+         Global variable delta_x is safe (not modified) over a call to printf
+         Global variable delta_x is safe (not modified) over a call to add_norm
+         Global variable delta_x is safe (not modified) over a call to force
+         Global variable delta_x is safe (not modified) over a call to sprintf
+         Global variable delta_x is safe (not modified) over a call to fprintf
+         Global variable collisions is safe (not modified) over a call to second
+         Global variable collisions is safe (not modified) over a call to gettimeofday
+         Global variable collisions is safe (not modified) over a call to atoi
+         Global variable collisions is safe (not modified) over a call to calloc
+         Global variable collisions is safe (not modified) over a call to fopen
+         Global variable collisions is safe (not modified) over a call to perror
+         Global variable collisions is safe (not modified) over a call to exit
+         Global variable collisions is safe (not modified) over a call to __isoc99_fscanf
+         Global variable collisions is safe (not modified) over a call to fclose
+         Global variable collisions is safe (not modified) over a call to printf
+         Global variable collisions is safe (not modified) over a call to visc_force
+         Global variable collisions is safe (not modified) over a call to wind_force
+         Global variable collisions is safe (not modified) over a call to add_norm
+         Global variable collisions is safe (not modified) over a call to force
+         Global variable collisions is safe (not modified) over a call to sprintf
+         Global variable collisions is safe (not modified) over a call to fprintf
+         Global variable r is safe (not modified) by any call in this routine
+         Global variable delta_r is safe (not modified) by any call in this routine
+         Dummy argument number 5 converted to local variable
+         Dummy argument number 4 converted to local variable
+         Dummy argument number 2 converted to local variable
+         Dummy argument number 1 converted to local variable
+     16, IPA: 81 pointer targets disambiguated
+         IPA: 53 global variables eligible for optimization
+         IPA: 26 conditional branches removed
+     26, second inlined, size=4 (IPA) file control.c (131)
+     54, Conditional removed
+     62, second inlined, size=4 (IPA) file control.c (131)
+     72, Conditional removed
+     79, second inlined, size=4 (IPA) file control.c (131)
+     87, Conditional removed
+     88, second inlined, size=4 (IPA) file control.c (131)
+     90, evolve inlined, size=114 (IPA) file MD.c (25)
+          38, Conditional removed
+          39, visc_force inlined, size=6 (IPA) file util.c (5)
+                8, Conditional removed
+          43, wind_force inlined, size=26 (IPA) file util.c (14)
+               18, Conditional removed
+               23, Conditional removed
+          46, Conditional removed
+              Memory zero idiom, loop replaced by call to __c_mzero8
+          50, Conditional removed
+          51, add_norm inlined, size=6 (IPA) file util.c (34)
+               37, Conditional removed
+          54, Conditional removed
+          59, Conditional removed
+          60, Conditional removed
+          62, force inlined, size=3 (IPA) file util.c (43)
+          68, Conditional removed
+          70, Conditional removed
+          78, Conditional removed
+              Memory zero idiom, loop replaced by call to __c_mzero8
+          81, Conditional removed
+          82, add_norm inlined, size=6 (IPA) file util.c (34)
+               37, Conditional removed
+          84, Conditional removed
+          92, Conditional removed
+          94, Conditional removed
+          98, force inlined, size=3 (IPA) file util.c (43)
+         100, force inlined, size=3 (IPA) file util.c (43)
+         104, force inlined, size=3 (IPA) file util.c (43)
+         106, force inlined, size=3 (IPA) file util.c (43)
+         115, Conditional removed
+         116, Conditional removed
+         122, Conditional removed
+         123, Conditional removed
+     92, second inlined, size=4 (IPA) file control.c (131)
+    100, second inlined, size=4 (IPA) file control.c (131)
+    110, Conditional removed
+    118, second inlined, size=4 (IPA) file control.c (131)
+    122, second inlined, size=4 (IPA) file control.c (131)
+second:
+      0, Dummy argument number 5 converted to local variable
+         Dummy argument number 4 converted to local variable
+         Dummy argument number 2 converted to local variable
+         Dummy argument number 1 converted to local variable
+IPA: Recompiling util.o: stale object file
+visc_force:
+      0, Dummy argument converted to local variable
+         IPA: The value of this argument is the constant 4096
+         Pointer visc is unique (does not alias any other pointer or variable)
+         Variable visc with 1 stars always points to allocated memory, including allocation site 4
+         Pointer visc points to memory that is aligned on a 16 boundary
+         Dummy pointer target is always quad-aligned
+      5, IPA: 1 constant-valued arguments replaced
+         IPA: 1 constant-valued arguments removed
+         IPA: 12 pointer targets disambiguated
+         IPA: 1 conditional branches removed
+      8, Conditional removed
+wind_force:
+      0, Dummy argument converted to local variable
+         Dummy argument converted to local variable
+         Dummy argument converted to local variable
+         Dummy argument converted to local variable
+         IPA: The value of this argument is the constant 4096
+         IPA: This pointer may point to global variable f with 0 indirections
+         Pointer visc is unique (does not alias any other pointer or variable)
+         Variable visc with 1 stars always points to allocated memory, including allocation site 4
+         Pointer visc points to memory that is aligned on a 16 boundary
+         Dummy pointer target is always quad-aligned
+         IPA: This pointer may point to global variable pos with 0 indirections
+         IPA: This pointer may point to global variable P with 0 indirections
+     14, IPA: 1 constant-valued arguments replaced
+         IPA: 4 constant-valued arguments removed
+         IPA: 39 pointer targets disambiguated
+         IPA: 2 conditional branches removed
+     18, Conditional removed
+     23, Conditional removed
+add_norm:
+      0, IPA: The value of this argument lies between 4096 and 8386560
+         Pointer r is unique (does not alias any other pointer or variable)
+         Variable r with 1 stars always points to allocated memory, including allocation site 1
+         Variable r with 1 stars always points to allocated memory, including allocation site 2
+         Pointer r points to memory that is aligned on a 16 boundary
+         Dummy pointer target is always quad-aligned
+     34, IPA: 26 pointer targets disambiguated
+         IPA: 1 conditional branches removed
+     37, Conditional removed
+evolve:
+     25, IPA: 17 conditional branches removed
+     38, Conditional removed
+     46, Conditional removed
+         Memory zero idiom, loop replaced by call to __c_mzero8
+     50, Conditional removed
+     54, Conditional removed
+     59, Conditional removed
+     60, Conditional removed
+     68, Conditional removed
+     70, Conditional removed
+     78, Conditional removed
+         Memory zero idiom, loop replaced by call to __c_mzero8
+     81, Conditional removed
+     84, Conditional removed
+     92, Conditional removed
+     94, Conditional removed
+    115, Conditional removed
+    116, Conditional removed
+    122, Conditional removed
+    123, Conditional removed
+pgcc -Mipa=fast,inline -Minfo=all -Mneginfo=all   -c -o control.o control.c
+main:
+     16, IPA: 4 conditional branches removed
+     54, Conditional removed
+     72, Conditional removed
+     87, Conditional removed
+    110, Conditional removed
+pgcc -Mipa=fast,inline -Minfo=all -Mneginfo=all   -c -o util.o util.c
+wind_force:
+     14, IPA: 1 conditional branches removed
+     23, Conditional removed
+pgcc -Mipa=fast,inline -Minfo=all -Mneginfo=all  -o MD  MD.o control.o util.o -lm
+IPA: Recompiling MD.o: stale object file
+evolve:
+      0, Variable visc with 1 stars always points to allocated memory, including allocation site 4
+         Global variable visc is safe (not modified in this routine or any routine called from it)
+         Pointer visc points to memory that is aligned on a 16 boundary
+         Global pointer target is always quad-aligned
+         Variable r with 1 stars always points to allocated memory, including allocation site 1
+         Global variable r is safe (not modified in this routine or any routine called from it)
+         Pointer r points to memory that is aligned on a 16 boundary
+         Global pointer target is always quad-aligned
+         Variable mass with 1 stars always points to allocated memory, including allocation site 3
+         Global variable mass is safe (not modified in this routine or any routine called from it)
+         Pointer mass points to memory that is aligned on a 16 boundary
+         Global pointer target is always quad-aligned
+         Variable delta_r with 1 stars always points to allocated memory, including allocation site 2
+         Global variable delta_r is safe (not modified in this routine or any routine called from it)
+         Pointer delta_r points to memory that is aligned on a 16 boundary
+         Global pointer target is always quad-aligned
+         Function printf is safe (does not read/write globals)
+         Function visc_force does not read any global variables
+         Function visc_force does not read any file static variables
+         Function visc_force does not write any file static variables
+         Function wind_force does not read any global variables
+         Function wind_force does not write any global variables
+         Function wind_force does not read any file static variables
+         Function wind_force does not write any file static variables
+         Function add_norm does not read any global variables
+         Function add_norm does not write any global variables
+         Function add_norm does not read any file static variables
+         Function add_norm does not write any file static variables
+         Function force does not write to any of its arguments
+         Function force does not read any global variables
+         Function force does not write any global variables
+         Function force does not read any file static variables
+         Function force does not write any file static variables
+         Global variable collisions is safe (not modified) by any call in this routine
+         Dummy argument converted to local variable
+         Dummy argument converted to local variable
+         Dummy argument converted to local variable
+         Dummy argument converted to local variable
+     25, IPA: 81 pointer targets disambiguated
+         IPA: 87 global variables eligible for optimization
+         IPA: 22 conditional branches removed
+     38, Conditional removed
+     39, visc_force inlined, size=6 (IPA) file util.c (5)
+           8, Conditional removed
+     43, wind_force inlined, size=26 (IPA) file util.c (14)
+          18, Conditional removed
+          23, Conditional removed
+     46, Conditional removed
+         Memory zero idiom, loop replaced by call to __c_mzero8
+     50, Conditional removed
+     51, add_norm inlined, size=6 (IPA) file util.c (34)
+          37, Conditional removed
+     54, Conditional removed
+     59, Conditional removed
+     60, Conditional removed
+     62, force inlined, size=3 (IPA) file util.c (43)
+     68, Conditional removed
+     70, Conditional removed
+     78, Conditional removed
+         Memory zero idiom, loop replaced by call to __c_mzero8
+     81, Conditional removed
+     82, add_norm inlined, size=6 (IPA) file util.c (34)
+          37, Conditional removed
+     84, Conditional removed
+     92, Conditional removed
+     94, Conditional removed
+     98, force inlined, size=3 (IPA) file util.c (43)
+    100, force inlined, size=3 (IPA) file util.c (43)
+    104, force inlined, size=3 (IPA) file util.c (43)
+    106, force inlined, size=3 (IPA) file util.c (43)
+    115, Conditional removed
+    116, Conditional removed
+    122, Conditional removed
+    123, Conditional removed
+IPA: Recompiling control.o: stale object file
+main:
+      0, Variable visc with 1 stars always points to allocated memory, including allocation site 4
+         Pointer visc points to memory that is aligned on a 16 boundary
+         Global pointer target is always quad-aligned
+         Variable mass with 1 stars always points to allocated memory, including allocation site 3
+         Pointer mass points to memory that is aligned on a 16 boundary
+         Global pointer target is always quad-aligned
+         Variable r with 1 stars always points to allocated memory, including allocation site 1
+         Pointer r points to memory that is aligned on a 16 boundary
+         Global pointer target is always quad-aligned
+         Variable delta_r with 1 stars always points to allocated memory, including allocation site 2
+         Pointer delta_r points to memory that is aligned on a 16 boundary
+         Global pointer target is always quad-aligned
+         Function second does not write to any of its arguments
+         Function second does not read any global variables
+         Function second does not write any global variables
+         Function second does not read any file static variables
+         Function second does not write any file static variables
+         Function atoi is pure (no global read/write, its result depends only on its argument values)
+         Function calloc is safe (does not read/write globals)
+         Function calloc returns newly allocated memory
+         Function fopen is safe (does not read/write globals)
+         Function evolve does not write to any of its arguments
+         Function evolve does not read any file static variables
+         Function evolve does not write any file static variables
+         Function printf is safe (does not read/write globals)
+         Function visc_force does not read any global variables
+         Function visc_force does not read any file static variables
+         Function visc_force does not write any file static variables
+         Function wind_force does not read any global variables
+         Function wind_force does not write any global variables
+         Function wind_force does not read any file static variables
+         Function wind_force does not write any file static variables
+         Function add_norm does not read any global variables
+         Function add_norm does not write any global variables
+         Function add_norm does not read any file static variables
+         Function add_norm does not write any file static variables
+         Function force does not write to any of its arguments
+         Function force does not read any global variables
+         Function force does not write any global variables
+         Function force does not read any file static variables
+         Function force does not write any file static variables
+         Function fprintf is safe (does not read/write globals)
+         Global variable pos is safe (not modified) over a call to second
+         Global variable pos is safe (not modified) over a call to gettimeofday
+         Global variable pos is safe (not modified) over a call to atoi
+         Global variable pos is safe (not modified) over a call to calloc
+         Global variable pos is safe (not modified) over a call to fopen
+         Global variable pos is safe (not modified) over a call to perror
+         Global variable pos is safe (not modified) over a call to exit
+         Global variable pos is safe (not modified) over a call to __isoc99_fscanf
+         Global variable pos is safe (not modified) over a call to fclose
+         Global variable pos is safe (not modified) over a call to printf
+         Global variable pos is safe (not modified) over a call to add_norm
+         Global variable pos is safe (not modified) over a call to force
+         Global variable pos is safe (not modified) over a call to sprintf
+         Global variable pos is safe (not modified) over a call to fprintf
+         Global variable vel is safe (not modified) over a call to second
+         Global variable vel is safe (not modified) over a call to gettimeofday
+         Global variable vel is safe (not modified) over a call to atoi
+         Global variable vel is safe (not modified) over a call to calloc
+         Global variable vel is safe (not modified) over a call to fopen
+         Global variable vel is safe (not modified) over a call to perror
+         Global variable vel is safe (not modified) over a call to exit
+         Global variable vel is safe (not modified) over a call to __isoc99_fscanf
+         Global variable vel is safe (not modified) over a call to fclose
+         Global variable vel is safe (not modified) over a call to printf
+         Global variable vel is safe (not modified) over a call to add_norm
+         Global variable vel is safe (not modified) over a call to force
+         Global variable vel is safe (not modified) over a call to sprintf
+         Global variable vel is safe (not modified) over a call to fprintf
+         Global variable f is safe (not modified) over a call to second
+         Global variable f is safe (not modified) over a call to gettimeofday
+         Global variable f is safe (not modified) over a call to atoi
+         Global variable f is safe (not modified) over a call to calloc
+         Global variable f is safe (not modified) over a call to fopen
+         Global variable f is safe (not modified) over a call to perror
+         Global variable f is safe (not modified) over a call to exit
+         Global variable f is safe (not modified) over a call to __isoc99_fscanf
+         Global variable f is safe (not modified) over a call to fclose
+         Global variable f is safe (not modified) over a call to printf
+         Global variable f is safe (not modified) over a call to add_norm
+         Global variable f is safe (not modified) over a call to force
+         Global variable f is safe (not modified) over a call to sprintf
+         Global variable f is safe (not modified) over a call to fprintf
+         Global variable visc is safe (not modified) by any call in this routine
+         Global variable mass is safe (not modified) by any call in this routine
+         Global variable delta_x is safe (not modified) over a call to second
+         Global variable delta_x is safe (not modified) over a call to gettimeofday
+         Global variable delta_x is safe (not modified) over a call to atoi
+         Global variable delta_x is safe (not modified) over a call to calloc
+         Global variable delta_x is safe (not modified) over a call to fopen
+         Global variable delta_x is safe (not modified) over a call to perror
+         Global variable delta_x is safe (not modified) over a call to exit
+         Global variable delta_x is safe (not modified) over a call to __isoc99_fscanf
+         Global variable delta_x is safe (not modified) over a call to fclose
+         Global variable delta_x is safe (not modified) over a call to printf
+         Global variable delta_x is safe (not modified) over a call to add_norm
+         Global variable delta_x is safe (not modified) over a call to force
+         Global variable delta_x is safe (not modified) over a call to sprintf
+         Global variable delta_x is safe (not modified) over a call to fprintf
+         Global variable collisions is safe (not modified) over a call to second
+         Global variable collisions is safe (not modified) over a call to gettimeofday
+         Global variable collisions is safe (not modified) over a call to atoi
+         Global variable collisions is safe (not modified) over a call to calloc
+         Global variable collisions is safe (not modified) over a call to fopen
+         Global variable collisions is safe (not modified) over a call to perror
+         Global variable collisions is safe (not modified) over a call to exit
+         Global variable collisions is safe (not modified) over a call to __isoc99_fscanf
+         Global variable collisions is safe (not modified) over a call to fclose
+         Global variable collisions is safe (not modified) over a call to printf
+         Global variable collisions is safe (not modified) over a call to visc_force
+         Global variable collisions is safe (not modified) over a call to wind_force
+         Global variable collisions is safe (not modified) over a call to add_norm
+         Global variable collisions is safe (not modified) over a call to force
+         Global variable collisions is safe (not modified) over a call to sprintf
+         Global variable collisions is safe (not modified) over a call to fprintf
+         Global variable r is safe (not modified) by any call in this routine
+         Global variable delta_r is safe (not modified) by any call in this routine
+         Dummy argument number 5 converted to local variable
+         Dummy argument number 4 converted to local variable
+         Dummy argument number 2 converted to local variable
+         Dummy argument number 1 converted to local variable
+     16, IPA: 81 pointer targets disambiguated
+         IPA: 53 global variables eligible for optimization
+         IPA: 26 conditional branches removed
+     26, second inlined, size=4 (IPA) file control.c (131)
+     54, Conditional removed
+     62, second inlined, size=4 (IPA) file control.c (131)
+     72, Conditional removed
+     79, second inlined, size=4 (IPA) file control.c (131)
+     87, Conditional removed
+     88, second inlined, size=4 (IPA) file control.c (131)
+     90, evolve inlined, size=114 (IPA) file MD.c (25)
+          38, Conditional removed
+          39, visc_force inlined, size=6 (IPA) file util.c (5)
+                8, Conditional removed
+          43, wind_force inlined, size=26 (IPA) file util.c (14)
+               18, Conditional removed
+               23, Conditional removed
+          46, Conditional removed
+              Memory zero idiom, loop replaced by call to __c_mzero8
+          50, Conditional removed
+          51, add_norm inlined, size=6 (IPA) file util.c (34)
+               37, Conditional removed
+          54, Conditional removed
+          59, Conditional removed
+          60, Conditional removed
+          62, force inlined, size=3 (IPA) file util.c (43)
+          68, Conditional removed
+          70, Conditional removed
+          78, Conditional removed
+              Memory zero idiom, loop replaced by call to __c_mzero8
+          81, Conditional removed
+          82, add_norm inlined, size=6 (IPA) file util.c (34)
+               37, Conditional removed
+          84, Conditional removed
+          92, Conditional removed
+          94, Conditional removed
+          98, force inlined, size=3 (IPA) file util.c (43)
+         100, force inlined, size=3 (IPA) file util.c (43)
+         104, force inlined, size=3 (IPA) file util.c (43)
+         106, force inlined, size=3 (IPA) file util.c (43)
+         115, Conditional removed
+         116, Conditional removed
+         122, Conditional removed
+         123, Conditional removed
+     92, second inlined, size=4 (IPA) file control.c (131)
+    100, second inlined, size=4 (IPA) file control.c (131)
+    110, Conditional removed
+    118, second inlined, size=4 (IPA) file control.c (131)
+    122, second inlined, size=4 (IPA) file control.c (131)
+second:
+      0, Dummy argument number 5 converted to local variable
+         Dummy argument number 4 converted to local variable
+         Dummy argument number 2 converted to local variable
+         Dummy argument number 1 converted to local variable
+IPA: Recompiling util.o: stale object file
+visc_force:
+      0, Dummy argument converted to local variable
+         IPA: The value of this argument is the constant 4096
+         Pointer visc is unique (does not alias any other pointer or variable)
+         Variable visc with 1 stars always points to allocated memory, including allocation site 4
+         Pointer visc points to memory that is aligned on a 16 boundary
+         Dummy pointer target is always quad-aligned
+      5, IPA: 1 constant-valued arguments replaced
+         IPA: 1 constant-valued arguments removed
+         IPA: 12 pointer targets disambiguated
+         IPA: 1 conditional branches removed
+      8, Conditional removed
+wind_force:
+      0, Dummy argument converted to local variable
+         Dummy argument converted to local variable
+         Dummy argument converted to local variable
+         Dummy argument converted to local variable
+         IPA: The value of this argument is the constant 4096
+         IPA: This pointer may point to global variable f with 0 indirections
+         Pointer visc is unique (does not alias any other pointer or variable)
+         Variable visc with 1 stars always points to allocated memory, including allocation site 4
+         Pointer visc points to memory that is aligned on a 16 boundary
+         Dummy pointer target is always quad-aligned
+         IPA: This pointer may point to global variable pos with 0 indirections
+         IPA: This pointer may point to global variable P with 0 indirections
+     14, IPA: 1 constant-valued arguments replaced
+         IPA: 4 constant-valued arguments removed
+         IPA: 39 pointer targets disambiguated
+         IPA: 2 conditional branches removed
+     18, Conditional removed
+     23, Conditional removed
+add_norm:
+      0, IPA: The value of this argument lies between 4096 and 8386560
+         Pointer r is unique (does not alias any other pointer or variable)
+         Variable r with 1 stars always points to allocated memory, including allocation site 1
+         Variable r with 1 stars always points to allocated memory, including allocation site 2
+         Pointer r points to memory that is aligned on a 16 boundary
+         Dummy pointer target is always quad-aligned
+     34, IPA: 26 pointer targets disambiguated
+         IPA: 1 conditional branches removed
+     37, Conditional removed
+
