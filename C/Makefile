@@ -1,7 +1,9 @@
 SRC=MD.c control.c util.c 
 OBJ=$(SRC:.c=.o)
 CC=pgcc
-CFLAGS= -O0
+#CFLAGS= -O3 -fast -Mipa=fast,inline -Minfo=all -Mneginfo=all
+
+CFLAGS = -O0
 
 
 all: MD

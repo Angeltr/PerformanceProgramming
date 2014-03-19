@@ -36,4 +36,4 @@ DEF int collisions;
 #define G 2.0
 #define M_central 1000.0
 
-void evolve(int Nstep, double dt);
+void evolve(int count, double dt, double timing[]);

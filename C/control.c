@@ -10,8 +10,9 @@
 
 #define DECL
 #include "coord.h"
+#include "util.h"
 
-double second(void);
+//double second(void);
  
 int main(int argc, char *argv[]) {
 
@@ -21,6 +22,7 @@ int main(int argc, char *argv[]) {
 	double inputTime;
 	double outputTime = 0;
 	double computationTime = 0;
+	double timing[9] = {0,0,0,0,0,0,0,0,0};
 	char name[80];
 
 	tstart = second();
@@ -87,7 +89,7 @@ int main(int argc, char *argv[]) {
 	for (j = 1; j <= Nsave; j++) {
 		start = second();
 
-		evolve(Nstep,dt); 
+		evolve(Nstep, dt, timing); 
 
 		stop = second();
 
@@ -123,10 +125,23 @@ int main(int argc, char *argv[]) {
 
 	printf("\nTotal IO time = %f seconds\n", inputTime + outputTime);
 	printf("Total computation time = %f seconds\n", computationTime);
-	printf("Total program time = %f seconds\n", tstop - tstart);
+	printf("Total program time = %f seconds\n\n", tstop - tstart);
+
+
+	printf("Set viscocity:   %f seconds\n", timing[0]);
+	printf("Add wind:   %f seconds\n", timing[1]);
+	printf("Calculate distance from central mass:   %f secconds\n", timing[2]);
+	printf("Calculate central force:   %f seconds\n", timing[3]);
+	printf("Calculate pairwise separation:   %f seconds\n", timing[4]);
+	printf("Calculate norm:   %f seconds\n", timing[5]);
+	printf("Add pairwise forces:   %f seconds\n", timing[6]);
+	printf("Update positions:   %f seconds\n", timing[7]);
+	printf("Update velocities:   %f seconds\n", timing[8]);
 
 }
 
+
+/*
 double second()
 {
 	/* struct timeval { long        tv_sec; 
@@ -135,11 +150,11 @@ double second()
 	   struct timezone { int   tz_minuteswest;
 	   int        tz_dsttime;      };     */
 
-	struct timeval tp;
+/*	struct timeval tp;
 	struct timezone tzp;
 	int i;
 
 	i = gettimeofday(&tp,&tzp);
 	return ( (double) tp.tv_sec + (double) tp.tv_usec * 1.e-6 );
-}
+}*/
 

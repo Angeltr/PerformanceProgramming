@@ -22,9 +22,11 @@
 #include "util.h"
 
 
-void evolve(int count, double dt) {
+//void evolve(int count, double dt, double timing[]) {
+void evolve(int count, double dt, double timing[]) {
 	int step;
 	int i, j, k, l;
+	double start, stop;
 
 	/*
 	 * Loop over timesteps.
@@ -34,15 +36,29 @@ void evolve(int count, double dt) {
 		printf("timestep %d\n",step);
 		printf("collisions %d\n",collisions);
 
+
 		/* set the viscosity term in the force calculation */
+		start = second();
 		for (j = 0; j < Ndim; j++) {
 			visc_force(Nbody, f[j], visc, vel[j]);
 		}
+		stop = second();
+
+		timing[0] += stop - start;
+
 
 		/* add the wind term in the force calculation */
+		start = second();
+
 		wind_force(Nbody, f, visc, pos, P);
 
+		stop = second();
+
+		timing[1] += stop - start;
+
+
 		/* calculate distance from central mass */
+		start = second();
 		for (k = 0; k < Nbody; k++) {
 			r[k] = 0.0;
 		}
@@ -54,16 +70,26 @@ void evolve(int count, double dt) {
 		for (k = 0; k < Nbody; k++) {
 			r[k] = sqrt(r[k]);
 		}
+		stop = second();
+
+		timing[2] += stop - start;
+
 
 		/* calculate central force */
+		start = second();
 		for (i = 0; i < Nbody; i++) {
 			for (l = 0; l < Ndim; l++) {
 				f[l][i] = f[l][i] - 
 					force(G*mass[i]*M_central, pos[l][i], r[i]);
 			}
 		}
+		stop = second();
+
+		timing[3] += stop - start;
+
 
 		/* calculate pairwise separation of particles */
+		start = second();
 		k = 0;
 		for (i = 0; i < Nbody; i++) {
 			for (j = i+1; j < Nbody; j++) {
@@ -73,8 +99,13 @@ void evolve(int count, double dt) {
 				k = k + 1;
 			}
 		}
+		stop = second();
+
+		timing[4] += stop - start;
+
 
 		/* calculate norm of seperation vector */
+		start = second();
 		for (k = 0; k < Npair; k++) {
 			delta_r[k] = 0.0;
 		}
@@ -84,10 +115,15 @@ void evolve(int count, double dt) {
 		for (k = 0; k < Npair; k++) {
 			delta_r[k] = sqrt(delta_r[k]);
 		}
+		stop = second();
+
+		timing[5] += stop - start;
+
 
 		/*
 		 * add pairwise forces.
 		 */
+		start = second();
 		k = 0;
 		for (i = 0; i < Nbody; i++) {
 			for (j = i+1; j<Nbody; j++) {
@@ -110,21 +146,33 @@ void evolve(int count, double dt) {
 				k = k + 1;
 			}
 		}
+		stop = second();
+
+		timing[6] += stop - start;
+
 
 		/* update positions */
+		start = second();
 		for (i = 0; i < Nbody; i++) {
 			for (j = 0; j < Ndim; j++) {
 				pos[j][i] = pos[j][i] + dt * vel[j][i];
 			}
 		}
+		stop = second();
+
+		timing[7] += stop - start;
+
 
 		/* update velocities */
+		start = second();
 		for (i = 0; i < Nbody; i++) {
 			for (j = 0; j < Ndim; j++) {
 				vel[j][i] = vel[j][i] + dt * (f[j][i]/mass[i]);
 			}
 		}
+		stop = second();
 
+		timing[8] += stop - start;
 
 	}
 
