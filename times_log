@@ -4,3 +4,116 @@ Total IO time          = 1.815891 seconds
 Total computation time = 74.443159 seconds
 Total program time     = 76.259864 seconds
 
+_______________________________________________________________________________
+Level 1 optimizations (-O1):
+
+Total IO time = 1.428961 seconds
+Total computation time = 82.396423 seconds
+Total program time = 83.826215 seconds
+
+
+_______________________________________________________________________________
+Level 2 optimizations (-O2):
+
+Total IO time = 0.993198 seconds
+Total computation time = 69.703958 seconds
+Total program time = 70.698272 seconds
+
+
+_______________________________________________________________________________
+Level 3 optimizations (-O3):
+
+Total IO time = 0.957086 seconds
+Total computation time = 65.417817 seconds
+Total program time = 66.375731 seconds
+
+
+_______________________________________________________________________________
+Level 4 optimizations (-O4):
+
+Total IO time = 0.865142 seconds
+Total computation time = 71.339283 seconds
+Total program time = 72.205241 seconds
+
+
+_______________________________________________________________________________
+Loop unrolling (-Munroll):
+
+Compiler log (which loops are unrolled and how many times)
+evolve:
+     46, Memory zero idiom, loop replaced by call to __c_mzero8
+     54, Loop unrolled 8 times
+     69, Loop unrolled 2 times
+     70, Loop unrolled 3 times (completely unrolled)
+     78, Memory zero idiom, loop replaced by call to __c_mzero8
+     84, Loop unrolled 8 times
+    116, Loop unrolled 3 times (completely unrolled)
+    123, Loop unrolled 3 times (completely unrolled)
+
+
+Total IO time = 0.775747 seconds
+Total computation time = 76.316704 seconds
+Total program time = 77.093288 seconds
+
+
+_______________________________________________________________________________
+Loop unrolling (-Munroll) plus level 3 optimizations (-O3):
+
+Total IO time = 0.931322 seconds
+Total computation time = 69.135776 seconds
+Total program time = 70.067918 seconds
+
+
+_______________________________________________________________________________
+Vectorization (-Mvect):
+
+Compiler log:
+evolve:
+     32, Loop not vectorized/parallelized: too deeply nested
+     38, Loop not vectorized/parallelized: contains call
+     46, Memory zero idiom, loop replaced by call to __c_mzero8
+     50, Loop not vectorized/parallelized: contains call
+     60, Loop not vectorized/parallelized: contains call
+     70, Loop not vectorized/parallelized: loop count too small
+     78, Memory zero idiom, loop replaced by call to __c_mzero8
+     81, Loop not vectorized/parallelized: contains call
+     94, Loop not vectorized/parallelized: contains call
+    116, Loop not vectorized/parallelized: loop count too small
+    123, Loop not vectorized/parallelized: loop count too small
+pgcc -Mvect -Minfo=all -Mneginfo=all   -c -o control.o control.c
+main:
+     54, Loop not vectorized/parallelized: loop count too small
+     72, Loop not vectorized/parallelized: contains call
+    110, Loop not vectorized/parallelized: contains call
+pgcc -Mvect -Minfo=all -Mneginfo=all   -c -o util.o util.c
+visc_force:
+      8, Loop not vectorized: data dependency
+wind_force:
+     23, Loop not vectorized/parallelized: loop count too small
+add_norm:
+     37, Loop not vectorized: data dependency
+
+
+
+Total IO time = 1.093039 seconds
+Total computation time = 72.259766 seconds
+Total program time = 73.353643 seconds
+
+
+_______________________________________________________________________________
+Interprocedural analysis (-Mipa):
+
+Total IO time = 1.077210 seconds
+Total computation time = 55.221670 seconds
+Total program time = 56.299691 seconds
+
+
+
+_______________________________________________________________________________
+Final (-O3 -fast -Mipa=fast,inline):
+
+Total IO time = 0.811225 seconds
+Total computation time = 46.763395 seconds
+Total program time = 47.575426 seconds
+
+
