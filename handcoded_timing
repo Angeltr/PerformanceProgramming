@@ -1,0 +1,166 @@
+Timings for 10 timesteps
+
+
+1. Hand-coded function inlining
+
+Total IO time = 0.577891 seconds
+Total computation time = 49.436232 seconds
+Total program time = 50.014939 seconds
+
+Set viscocity:   0.002736 seconds
+Add wind:   0.014060 seconds
+Calculate distance from central mass:   0.002035 secconds
+Calculate central force:   0.013359 seconds
+Calculate pairwise separation:   21.837773 seconds
+Calculate norm:   8.467865 seconds
+Add pairwise forces:   19.072730 seconds
+Update positions:   0.010409 seconds
+Update velocities:   0.014832 seconds
+
+______________________________________________________________________________
+
+
+2. Add pairwise forces
+
+
+Before:
+Total IO time = 0.694624 seconds
+Total computation time = 69.813340 seconds
+Total program time = 70.508788 seconds
+
+Set viscocity:   0.003201 seconds
+Add wind:   0.013586 seconds
+Calculate distance from central mass:   0.003268 secconds
+Calculate central force:   0.012508 seconds
+Calculate pairwise separation:   14.853060 seconds
+Calculate norm:   9.152569 seconds
+Add pairwise forces:   45.752876 seconds
+Update positions:   0.011692 seconds
+Update velocities:   0.010203 seconds
+
+
+After:
+Total IO time = 0.722408 seconds
+Total computation time = 58.061872 seconds
+Total program time = 58.785101 seconds
+
+Set viscocity:   0.003148 seconds
+Add wind:   0.013592 seconds
+Calculate distance from central mass:   0.003332 secconds
+Calculate central force:   0.012463 seconds
+Calculate pairwise separation:   16.534097 seconds
+Calculate norm:   8.989470 seconds
+Add pairwise forces:   32.482330 seconds
+Update positions:   0.012039 seconds
+Update velocities:   0.011060 seconds
+
+
+With flags enabled:
+Total IO time = 0.768601 seconds
+Total computation time = 44.304949 seconds
+Total program time = 45.074378 seconds
+
+Set viscocity:   0.003052 seconds
+Add wind:   0.013569 seconds
+Calculate distance from central mass:   0.002322 secconds
+Calculate central force:   0.012530 seconds
+Calculate pairwise separation:   19.804016 seconds
+Calculate norm:   8.390651 seconds
+Add pairwise forces:   16.057030 seconds
+Update positions:   0.009424 seconds
+Update velocities:   0.011991 seconds
+
+
+_______________________________________________________________________________
+
+3. Calculate pairwise separation (flags enabled)
+
+Total IO time = 0.686911 seconds
+Total computation time = 38.300731 seconds
+Total program time = 38.988454 seconds
+
+Set viscocity:   0.003237 seconds
+Add wind:   0.013687 seconds
+Calculate distance from central mass:   0.002400 secconds
+Calculate central force:   0.012735 seconds
+Calculate pairwise separation:   8.064612 seconds
+Calculate norm:   10.882976 seconds
+Add pairwise forces:   19.300306 seconds
+Update positions:   0.009350 seconds
+Update velocities:   0.011005 seconds
+
+
+
+(PLUS add pairwise forces)
+
+Total IO time = 0.786720 seconds
+Total computation time = 29.518800 seconds
+Total program time = 30.306339 seconds
+
+Set viscocity:   0.002621 seconds
+Add wind:   0.013541 seconds
+Calculate distance from central mass:   0.002182 secconds
+Calculate central force:   0.012529 seconds
+Calculate pairwise separation:   6.485795 seconds
+Calculate norm:   7.293686 seconds
+Add pairwise forces:   15.687922 seconds
+Update positions:   0.009193 seconds
+Update velocities:   0.010969 seconds
+
+
+____________________________________________________________________________________
+
+4. Calculate central force (plus flags, plus previous optimizations)
+
+Total IO time = 0.772771 seconds
+Total computation time = 29.466296 seconds
+Total program time = 30.239948 seconds
+
+Set viscocity:   0.002741 seconds
+Add wind:   0.013749 seconds
+Calculate distance from central mass:   0.002181 secconds
+Calculate central force:   0.012915 seconds
+Calculate pairwise separation:   6.514497 seconds
+Calculate norm:   7.226586 seconds
+Add pairwise forces:   15.672925 seconds
+Update positions:   0.009413 seconds
+Update velocities:   0.010916 seconds
+
+
+______________________________________________________________________________________
+
+5. Update positions and velocities + loop fusion (plus flags, plus previous opts)
+
+Total IO time = 0.691617 seconds
+Total computation time = 30.191629 seconds
+Total program time = 30.884036 seconds
+
+Set viscocity:   0.002671 seconds
+Add wind:   0.013610 seconds
+Calculate distance from central mass:   0.002150 secconds
+Calculate central force:   0.003905 seconds
+Calculate pairwise separation:   6.665782 seconds
+Calculate norm:   7.362339 seconds
+Add pairwise forces:   16.134887 seconds
+Update positions:   0.006027 seconds
+Update velocities:   0.000000 seconds
+
+
+_______________________________________________________________________________________
+
+6. Access opts + hand-coded function inline
+
+Total IO time = 0.565703 seconds
+Total computation time = 32.050174 seconds
+Total program time = 32.616710 seconds
+    
+Set viscocity:   0.003303 seconds
+Add wind:   0.014242 seconds
+Calculate distance from central mass:   0.002025 secconds
+Calculate central force:   0.003288 seconds
+Calculate pairwise separation:   7.975768 seconds
+Calculate norm:   8.648314 seconds
+Add pairwise forces:   15.393901 seconds
+Update positions:   0.008937 seconds
+Update velocities:   0.000000 seconds
+

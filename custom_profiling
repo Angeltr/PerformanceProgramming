@@ -1,5 +1,6 @@
 Time every single block of calculation inside evolve().
 
+1. Without flags
 
 Total IO time = 0.722256 seconds
 Total computation time = 72.536584 seconds
@@ -14,4 +15,22 @@ Calculate norm:   8.956842 seconds
 Add pairwise forces:   47.036939 seconds
 Update positions:   0.012074 seconds
 Update velocities:   0.011979 seconds
+
+
+_______________________________________________________________
+2. With flags
+
+Total IO time = 0.705531 seconds
+Total computation time = 48.027082 seconds
+Total program time = 48.733496 seconds
+
+Set viscocity:   0.002731 seconds
+Add wind:   0.013809 seconds
+Calculate distance from central mass:   0.002246 secconds
+Calculate central force:   0.012789 seconds
+Calculate pairwise separation:   19.562938 seconds
+Calculate norm:   10.109635 seconds
+Add pairwise forces:   18.301270 seconds
+Update positions:   0.009439 seconds
+Update velocities:   0.011893 seconds
 
