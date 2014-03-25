@@ -164,3 +164,78 @@ Add pairwise forces:   15.393901 seconds
 Update positions:   0.008937 seconds
 Update velocities:   0.000000 seconds
 
+
+________________________________________________________________________________________
+
+7. Four force() calls replaced with one (plus all previous opts)
+
+Total IO time = 0.746558 seconds
+Total computation time = 29.796244 seconds
+Total program time = 30.543607 seconds
+
+Set viscocity:   0.002820 seconds
+Add wind:   0.013527 seconds
+Calculate distance from central mass:   0.002218 secconds
+Calculate central force:   0.003884 seconds
+Calculate pairwise separation:   6.515154 seconds
+Calculate norm:   9.208393 seconds
+Add pairwise forces:   23.252209 seconds
+Update positions:   0.006127 seconds
+Update velocities:   0.000000 seconds
+
+
+_________________________________________________________________________________________
+
+8. Changed pointer arrays to simple arrays
+
+Total IO time = 1.915413 seconds
+Total computation time = 22.749831 seconds
+Total program time = 24.922580 seconds
+
+Set viscocity:   0.001932 seconds
+Add wind:   0.009732 seconds
+Calculate distance from central mass:   0.003036 secconds
+Calculate central force:   0.002037 seconds
+Calculate pairwise separation:   2.382247 seconds
+Calculate norm:   8.816660 seconds
+Add pairwise forces:   20.346172 seconds
+Update positions:   0.004263 seconds
+Update velocities:   0.000000 seconds
+
+
+__________________________________________________________________________________________
+
+9. Step 8 plus flag -Msafeptr in the compilation
+
+Total IO time = 1.123454 seconds
+Total computation time = 20.294063 seconds
+Total program time = 21.672036 seconds
+
+Set viscocity:   0.000949 seconds
+Add wind:   0.006734 seconds
+Calculate distance from central mass:   0.001980 secconds
+Calculate central force:   0.002044 seconds
+Calculate pairwise separation:   2.267493 seconds
+Calculate norm:   6.488519 seconds
+Add pairwise forces:   18.009303 seconds
+Update positions:   0.005245 seconds
+Update velocities:   0.000000 seconds
+                                      
+
+___________________________________________________________________________________________
+
+10. -Mvect flag with all the of the suboptions
+
+Total IO time = 1.394724 seconds
+Total computation time = 18.442281 seconds
+Total program time = 20.096670 seconds
+
+Set viscocity:   0.000937 seconds
+Add wind:   0.007359 seconds
+Calculate distance from central mass:   0.001667 secconds
+Calculate central force:   0.001996 seconds
+Calculate pairwise separation:   2.281273 seconds
+Calculate norm:   4.547483 seconds
+Add pairwise forces:   16.143534 seconds
+Update positions:   0.005178 seconds
+Update velocities:   0.000000 seconds 

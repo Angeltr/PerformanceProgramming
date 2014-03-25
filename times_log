@@ -123,3 +123,12 @@ With hand-coded function inlining (plus other flags: -O3 -fast -Mipa=fast)
 Total IO time = 0.577891 seconds
 Total computation time = 49.436232 seconds
 Total program time = 50.014939 seconds
+
+
+_______________________________________________________________________________
+--Mvect + suboptions
+
+Total IO time = 0.695155 seconds
+Total computation time = 29.533747 seconds
+Total program time = 30.229711 seconds
+
