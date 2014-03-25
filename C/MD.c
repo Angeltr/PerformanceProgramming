@@ -120,20 +120,23 @@ void evolve(int count, double dt, double timing[]) {
 		timing[5] += stop - start;
 
 
+
+		int debug=0;
 		/*
 		 * add pairwise forces.
 		 */
 		start = second();
-		k = 0;
+		k = 0;	
 		for (i = 0; i < Nbody; i++) {
-			for (j = i+1; j<Nbody; j++) {
+			for (j = i+1; j < Nbody; j++) {
 				for (l = 0; l < Ndim; l++) {
-					/*  flip force if close in */
+					
 					if ( delta_r[k] >= Size ) {
 						f[l][i] = f[l][i] - 
 							force(G*mass[i]*mass[j], delta_x[l][k], delta_r[k]);
 						f[l][j] = f[l][j] + 
 							force(G*mass[i]*mass[j], delta_x[l][k], delta_r[k]);
+						if(debug) printf("(i,j,l)=(%d,%d,%d) f[%d][%d],f[%d][%d] = m[%d], m[%d], d_x[%d][%d], d_r[%d] k=%d\n",i,j,l,l,i,l,j,i,j,l,k,k,k);
 					}
 					else {
 						f[l][i] = f[l][i] + 
@@ -143,12 +146,51 @@ void evolve(int count, double dt, double timing[]) {
 						collisions++;
 					}
 				}
-				k = k + 1;
+//			if(debug) printf("\n");
+			k = k + 1;
 			}
+		if(debug)	printf("\n");
 		}
 		stop = second();
 
 		timing[6] += stop - start;
+
+
+
+/*
+		start = second();
+		k = 0;
+		for (l = 0; l < Ndim; l++) {
+			k = 0;	
+			for (i = 0; i < Nbody; i++) {
+				for (j = i+1; j < Nbody; j++, k++) {
+				
+					if ( delta_r[k] >= Size ) {
+						f[l][i] = f[l][i] - 
+							force(G*mass[i]*mass[j], delta_x[l][k], delta_r[k]);
+						f[l][j] = f[l][j] + 
+							force(G*mass[i]*mass[j], delta_x[l][k], delta_r[k]);
+						if(debug) printf("(i,j,l)=(%d,%d,%d) f[%d][%d],f[%d][%d] = m[%d], m[%d], d_x[%d][%d], d_r[%d] k=%d\n",i,j,l,l,i,l,j,i,j,l,k,k,k);
+					}
+					else {
+						f[l][i] = f[l][i] + 
+							force(G*mass[i]*mass[j], delta_x[l][k], delta_r[k]);
+						f[l][j] = f[l][j] - 
+							force(G*mass[i]*mass[j], delta_x[l][k], delta_r[k]);
+						collisions++;
+					}
+				}
+			if(debug) printf("\n");
+			}
+		if(debug)	printf("\n");
+		}
+		stop = second();
+
+		timing[6] += stop - start;
+*/
+
+
+
 
 
 		/* update positions */

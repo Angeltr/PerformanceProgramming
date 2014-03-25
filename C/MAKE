@@ -1,0 +1,525 @@
+evolve:
+     25, IPA: 15 conditional branches removed
+     34, Loop not fused: contains call
+         Loop not vectorized/parallelized: too deeply nested
+     42, Conditional removed
+         Loop not fused: contains call
+         Loop not vectorized/parallelized: contains call
+     61, Conditional removed
+         Memory zero idiom, loop replaced by call to __c_mzero8
+     65, Conditional removed
+         Loop not fused: contains call
+         Loop not vectorized/parallelized: contains call
+     69, Conditional removed
+         Loop not fused: function call before adjacent loop
+         Generated vector sse code for the loop
+         Generated a prefetch instruction for the loop
+     78, Conditional removed
+         Loop not fused: contains call
+     79, Conditional removed
+         Loop not fused: contains call
+         Loop not vectorized/parallelized: contains call
+     92, Conditional removed
+         Loop not fused: function call before adjacent loop
+         Loop not vectorized/parallelized: loop count too small
+     94, Conditional removed
+         Loop not fused: complex flow graph
+     95, Loop not fused: complex flow graph
+         Generated 4 alternate versions of the loop
+         Generated vector sse code for the loop
+         Generated a prefetch instruction for the loop
+    107, Conditional removed
+         Memory zero idiom, loop replaced by call to __c_mzero8
+    110, Conditional removed
+         Loop not fused: contains call
+         Loop not vectorized/parallelized: contains call
+    113, Conditional removed
+         Loop not fused: function call before adjacent loop
+         Generated vector sse code for the loop
+         Generated a prefetch instruction for the loop
+    129, Conditional removed
+         Loop not fused: contains call
+    131, Conditional removed
+         Loop not fused: contains call
+    132, Loop not fused: contains call
+         Loop not vectorized/parallelized: contains call
+    158, Conditional removed
+         Outer loop unrolled 3 times (completely unrolled)
+    159, Conditional removed
+         Loop not fused: dependence chain to sibling loop
+         Loop not fused: function call before adjacent loop
+         Generated an alternate version of the loop
+         Generated vector sse code for the loop
+         Generated 4 prefetch instructions for the loop
+main:
+     17, IPA: 6 conditional branches removed
+     76, Conditional removed
+         Loop not fused: contains call
+         Loop not vectorized/parallelized: contains call
+     87, Conditional removed
+         Loop not vectorized/parallelized: loop count too small
+     88, Conditional removed
+         Loop not fused: complex flow graph
+     91, Conditional removed
+         Loop not fused: complex flow graph
+         Generated an alternate version of the loop
+         Generated vector sse code for the loop
+    102, Conditional removed
+         Loop not fused: contains call
+    125, Conditional removed
+         Loop not fused: contains call
+         Loop not vectorized/parallelized: contains call
+visc_force:
+      9, Generated 4 alternate versions of the loop
+         Generated vector sse code for the loop
+         Generated 2 prefetch instructions for the loop
+wind_force:
+     15, IPA: 1 conditional branches removed
+     19, Loop not vectorized: data dependency
+     21, Conditional removed
+         Loop unrolled 3 times (completely unrolled)
+add_norm:
+     35, Generated 3 alternate versions of the loop
+         Generated vector sse code for the loop
+         Generated 2 prefetch instructions for the loop
+IPA: Recompiling MD_access.o: stale object file
+evolve:
+      0, IPA: This pointer may point to anonymous memory space 1 with 0 indirections
+         Function printf is safe (does not read/write globals)
+         Function second does not write to any of its arguments
+         Function second does not read any global variables
+         Function second does not write any global variables
+         Function second does not read any file static variables
+         Function second does not write any file static variables
+         Function visc_force does not read any global variables
+         Function visc_force does not write any global variables
+         Function visc_force does not read any file static variables
+         Function visc_force does not write any file static variables
+         Function wind_force does not read any global variables
+         Function wind_force does not write any global variables
+         Function wind_force does not read any file static variables
+         Function wind_force does not write any file static variables
+         Function add_norm does not read any global variables
+         Function add_norm does not write any global variables
+         Function add_norm does not read any file static variables
+         Function add_norm does not write any file static variables
+         Function force does not write to any of its arguments
+         Function force does not read any global variables
+         Function force does not write any global variables
+         Function force does not read any file static variables
+         Function force does not write any file static variables
+         Global variable collisions is safe (not modified) by any call in this routine
+         Global variable f is safe (not modified) over a call to printf
+         Global variable f is safe (not modified) over a call to second
+         Global variable f is safe (not modified) over a call to gettimeofday
+         Global variable f is safe (not modified) over a call to force
+         Global variable vel is safe (not modified) over a call to printf
+         Global variable vel is safe (not modified) over a call to second
+         Global variable vel is safe (not modified) over a call to gettimeofday
+         Global variable vel is safe (not modified) over a call to force
+         Global variable pos is safe (not modified) over a call to printf
+         Global variable pos is safe (not modified) over a call to second
+         Global variable pos is safe (not modified) over a call to gettimeofday
+         Global variable pos is safe (not modified) over a call to force
+         Global variable r is safe (not modified) over a call to printf
+         Global variable r is safe (not modified) over a call to second
+         Global variable r is safe (not modified) over a call to gettimeofday
+         Global variable r is safe (not modified) over a call to force
+         Global variable delta_x is safe (not modified) over a call to printf
+         Global variable delta_x is safe (not modified) over a call to second
+         Global variable delta_x is safe (not modified) over a call to gettimeofday
+         Global variable delta_x is safe (not modified) over a call to force
+         Global variable delta_r is safe (not modified) over a call to printf
+         Global variable delta_r is safe (not modified) over a call to second
+         Global variable delta_r is safe (not modified) over a call to gettimeofday
+         Global variable delta_r is safe (not modified) over a call to force
+         Dummy argument converted to local variable
+         Dummy argument converted to local variable
+         Dummy argument converted to local variable
+         Dummy argument converted to local variable
+         Dummy argument converted to local variable
+     25, IPA: 1 global variables eligible for optimization
+         IPA: 20 conditional branches removed
+     34, Loop not fused: contains call
+         Loop not vectorized/parallelized: too deeply nested
+     41, second inlined, size=4 (IPA) file util.c (48)
+     42, Conditional removed
+         Outer loop unrolled 3 times (completely unrolled)
+     43, visc_force inlined, size=6 (IPA) file util.c (6)
+           9, Conditional removed
+              Loop not fused: dependence chain to sibling loop
+              Loop not fused: function call before adjacent loop
+              Generated an alternate version of the loop
+              Generated vector sse code for the loop
+              Generated 2 prefetch instructions for the loop
+     45, second inlined, size=4 (IPA) file util.c (48)
+     51, second inlined, size=4 (IPA) file util.c (48)
+     53, wind_force inlined, size=25 (IPA) file util.c (15)
+          19, Conditional removed
+              Loop not fused: function call before adjacent loop
+              Loop not vectorized: data dependency
+          21, Conditional removed
+              Loop unrolled 3 times (completely unrolled)
+     55, second inlined, size=4 (IPA) file util.c (48)
+     60, second inlined, size=4 (IPA) file util.c (48)
+     61, Conditional removed
+         Memory zero idiom, loop replaced by call to __c_mzero8
+     65, Conditional removed
+         Outer loop unrolled 3 times (completely unrolled)
+     66, add_norm inlined, size=6 (IPA) file util.c (32)
+          35, Conditional removed
+              Loop not fused: dependence chain to sibling loop
+              Loop not fused: function call before adjacent loop
+              2 loops fused
+              Generated an alternate version of the loop
+              Generated vector sse code for the loop
+              Generated 2 prefetch instructions for the loop
+     69, Conditional removed
+     72, second inlined, size=4 (IPA) file util.c (48)
+     77, second inlined, size=4 (IPA) file util.c (48)
+     78, Conditional removed
+         Outer loop unrolled 3 times (completely unrolled)
+     79, Conditional removed
+         Loop not fused: dependence chain to sibling loop
+         Loop not fused: function call before adjacent loop
+         Generated an alternate version of the loop
+         Generated vector sse code for the loop
+         Generated 4 prefetch instructions for the loop
+     81, force inlined, size=3 (IPA) file util.c (41)
+     84, second inlined, size=4 (IPA) file util.c (48)
+     90, second inlined, size=4 (IPA) file util.c (48)
+     92, Conditional removed
+         Loop not fused: function call before adjacent loop
+         Loop not vectorized/parallelized: loop count too small
+     94, Conditional removed
+         Loop not fused: complex flow graph
+     95, Loop not fused: complex flow graph
+         Generated 4 alternate versions of the loop
+         Generated vector sse code for the loop
+         Generated a prefetch instruction for the loop
+    100, second inlined, size=4 (IPA) file util.c (48)
+    106, second inlined, size=4 (IPA) file util.c (48)
+    107, Conditional removed
+         Memory zero idiom, loop replaced by call to __c_mzero8
+    110, Conditional removed
+         Outer loop unrolled 3 times (completely unrolled)
+    111, add_norm inlined, size=6 (IPA) file util.c (32)
+          35, Conditional removed
+              Loop not fused: dependence chain to sibling loop
+              Loop not fused: function call before adjacent loop
+              2 loops fused
+              Generated an alternate version of the loop
+              Generated vector sse code for the loop
+              Generated 2 prefetch instructions for the loop
+    113, Conditional removed
+    116, second inlined, size=4 (IPA) file util.c (48)
+    129, Conditional removed
+         Loop not fused: function call before adjacent loop
+         Loop not vectorized/parallelized: loop count too small
+    131, Conditional removed
+         Loop not fused: complex flow graph
+    132, Loop not fused: complex flow graph
+         Loop not vectorized: data dependency
+    133, force inlined, size=3 (IPA) file util.c (41)
+    147, second inlined, size=4 (IPA) file util.c (48)
+    157, second inlined, size=4 (IPA) file util.c (48)
+    158, Conditional removed
+         Outer loop unrolled 3 times (completely unrolled)
+    159, Conditional removed
+         Loop not fused: dependence chain to sibling loop
+         Loop not fused: function call before adjacent loop
+         Generated an alternate version of the loop
+         Generated vector sse code for the loop
+         Generated 4 prefetch instructions for the loop
+    164, second inlined, size=4 (IPA) file util.c (48)
+IPA: Recompiling control.o: stale object file
+main:
+      0, Function second does not write to any of its arguments
+         Function second does not read any global variables
+         Function second does not write any global variables
+         Function second does not read any file static variables
+         Function second does not write any file static variables
+         Function atoi is pure (no global read/write, its result depends only on its argument values)
+         Function fopen is safe (does not read/write globals)
+         Function evolve does not read any file static variables
+         Function evolve does not write any file static variables
+         Function printf is safe (does not read/write globals)
+         Function visc_force does not read any global variables
+         Function visc_force does not write any global variables
+         Function visc_force does not read any file static variables
+         Function visc_force does not write any file static variables
+         Function wind_force does not read any global variables
+         Function wind_force does not write any global variables
+         Function wind_force does not read any file static variables
+         Function wind_force does not write any file static variables
+         Function add_norm does not read any global variables
+         Function add_norm does not write any global variables
+         Function add_norm does not read any file static variables
+         Function add_norm does not write any file static variables
+         Function force does not write to any of its arguments
+         Function force does not read any global variables
+         Function force does not write any global variables
+         Function force does not read any file static variables
+         Function force does not write any file static variables
+         Function fprintf is safe (does not read/write globals)
+         Global variable pos is safe (not modified) over a call to second
+         Global variable pos is safe (not modified) over a call to gettimeofday
+         Global variable pos is safe (not modified) over a call to atoi
+         Global variable pos is safe (not modified) over a call to fopen
+         Global variable pos is safe (not modified) over a call to perror
+         Global variable pos is safe (not modified) over a call to exit
+         Global variable pos is safe (not modified) over a call to __isoc99_fscanf
+         Global variable pos is safe (not modified) over a call to fclose
+         Global variable pos is safe (not modified) over a call to printf
+         Global variable pos is safe (not modified) over a call to force
+         Global variable pos is safe (not modified) over a call to sprintf
+         Global variable pos is safe (not modified) over a call to fprintf
+         Global variable vel is safe (not modified) over a call to second
+         Global variable vel is safe (not modified) over a call to gettimeofday
+         Global variable vel is safe (not modified) over a call to atoi
+         Global variable vel is safe (not modified) over a call to fopen
+         Global variable vel is safe (not modified) over a call to perror
+         Global variable vel is safe (not modified) over a call to exit
+         Global variable vel is safe (not modified) over a call to __isoc99_fscanf
+         Global variable vel is safe (not modified) over a call to fclose
+         Global variable vel is safe (not modified) over a call to printf
+         Global variable vel is safe (not modified) over a call to force
+         Global variable vel is safe (not modified) over a call to sprintf
+         Global variable vel is safe (not modified) over a call to fprintf
+         Global variable visc is safe (not modified) over a call to second
+         Global variable visc is safe (not modified) over a call to gettimeofday
+         Global variable visc is safe (not modified) over a call to atoi
+         Global variable visc is safe (not modified) over a call to fopen
+         Global variable visc is safe (not modified) over a call to perror
+         Global variable visc is safe (not modified) over a call to exit
+         Global variable visc is safe (not modified) over a call to __isoc99_fscanf
+         Global variable visc is safe (not modified) over a call to fclose
+         Global variable visc is safe (not modified) over a call to printf
+         Global variable visc is safe (not modified) over a call to force
+         Global variable visc is safe (not modified) over a call to sprintf
+         Global variable visc is safe (not modified) over a call to fprintf
+         Global variable mass is safe (not modified) over a call to second
+         Global variable mass is safe (not modified) over a call to gettimeofday
+         Global variable mass is safe (not modified) over a call to atoi
+         Global variable mass is safe (not modified) over a call to fopen
+         Global variable mass is safe (not modified) over a call to perror
+         Global variable mass is safe (not modified) over a call to exit
+         Global variable mass is safe (not modified) over a call to __isoc99_fscanf
+         Global variable mass is safe (not modified) over a call to fclose
+         Global variable mass is safe (not modified) over a call to printf
+         Global variable mass is safe (not modified) over a call to force
+         Global variable mass is safe (not modified) over a call to sprintf
+         Global variable mass is safe (not modified) over a call to fprintf
+         Global variable collisions is safe (not modified) over a call to second
+         Global variable collisions is safe (not modified) over a call to gettimeofday
+         Global variable collisions is safe (not modified) over a call to atoi
+         Global variable collisions is safe (not modified) over a call to fopen
+         Global variable collisions is safe (not modified) over a call to perror
+         Global variable collisions is safe (not modified) over a call to exit
+         Global variable collisions is safe (not modified) over a call to __isoc99_fscanf
+         Global variable collisions is safe (not modified) over a call to fclose
+         Global variable collisions is safe (not modified) over a call to printf
+         Global variable collisions is safe (not modified) over a call to visc_force
+         Global variable collisions is safe (not modified) over a call to wind_force
+         Global variable collisions is safe (not modified) over a call to add_norm
+         Global variable collisions is safe (not modified) over a call to force
+         Global variable collisions is safe (not modified) over a call to sprintf
+         Global variable collisions is safe (not modified) over a call to fprintf
+         Global variable f is safe (not modified) over a call to second
+         Global variable f is safe (not modified) over a call to gettimeofday
+         Global variable f is safe (not modified) over a call to atoi
+         Global variable f is safe (not modified) over a call to fopen
+         Global variable f is safe (not modified) over a call to perror
+         Global variable f is safe (not modified) over a call to exit
+         Global variable f is safe (not modified) over a call to __isoc99_fscanf
+         Global variable f is safe (not modified) over a call to fclose
+         Global variable f is safe (not modified) over a call to printf
+         Global variable f is safe (not modified) over a call to force
+         Global variable f is safe (not modified) over a call to sprintf
+         Global variable f is safe (not modified) over a call to fprintf
+         Global variable r is safe (not modified) over a call to second
+         Global variable r is safe (not modified) over a call to gettimeofday
+         Global variable r is safe (not modified) over a call to atoi
+         Global variable r is safe (not modified) over a call to fopen
+         Global variable r is safe (not modified) over a call to perror
+         Global variable r is safe (not modified) over a call to exit
+         Global variable r is safe (not modified) over a call to __isoc99_fscanf
+         Global variable r is safe (not modified) over a call to fclose
+         Global variable r is safe (not modified) over a call to printf
+         Global variable r is safe (not modified) over a call to force
+         Global variable r is safe (not modified) over a call to sprintf
+         Global variable r is safe (not modified) over a call to fprintf
+         Global variable delta_x is safe (not modified) over a call to second
+         Global variable delta_x is safe (not modified) over a call to gettimeofday
+         Global variable delta_x is safe (not modified) over a call to atoi
+         Global variable delta_x is safe (not modified) over a call to fopen
+         Global variable delta_x is safe (not modified) over a call to perror
+         Global variable delta_x is safe (not modified) over a call to exit
+         Global variable delta_x is safe (not modified) over a call to __isoc99_fscanf
+         Global variable delta_x is safe (not modified) over a call to fclose
+         Global variable delta_x is safe (not modified) over a call to printf
+         Global variable delta_x is safe (not modified) over a call to force
+         Global variable delta_x is safe (not modified) over a call to sprintf
+         Global variable delta_x is safe (not modified) over a call to fprintf
+         Global variable delta_r is safe (not modified) over a call to second
+         Global variable delta_r is safe (not modified) over a call to gettimeofday
+         Global variable delta_r is safe (not modified) over a call to atoi
+         Global variable delta_r is safe (not modified) over a call to fopen
+         Global variable delta_r is safe (not modified) over a call to perror
+         Global variable delta_r is safe (not modified) over a call to exit
+         Global variable delta_r is safe (not modified) over a call to __isoc99_fscanf
+         Global variable delta_r is safe (not modified) over a call to fclose
+         Global variable delta_r is safe (not modified) over a call to printf
+         Global variable delta_r is safe (not modified) over a call to force
+         Global variable delta_r is safe (not modified) over a call to sprintf
+         Global variable delta_r is safe (not modified) over a call to fprintf
+         Dummy argument converted to local variable
+         Dummy argument converted to local variable
+         Dummy argument converted to local variable
+         Dummy argument converted to local variable
+         Dummy argument converted to local variable
+     17, IPA: 1 global variables eligible for optimization
+         IPA: 26 conditional branches removed
+     29, second inlined, size=4 (IPA) file util.c (48)
+     66, second inlined, size=4 (IPA) file util.c (48)
+     76, Conditional removed
+         Loop not fused: contains call
+         Loop not vectorized/parallelized: contains call
+     83, second inlined, size=4 (IPA) file util.c (48)
+     87, Conditional removed
+         Loop not vectorized/parallelized: loop count too small
+     88, Conditional removed
+         Loop not fused: complex flow graph
+     91, Conditional removed
+         Loop not fused: complex flow graph
+         Generated an alternate version of the loop
+         Generated vector sse code for the loop
+    102, Conditional removed
+         Loop not fused: contains call
+         Loop not vectorized/parallelized: too deeply nested
+    103, second inlined, size=4 (IPA) file util.c (48)
+    105, evolve inlined, size=113 (IPA) file MD_access.c (25)
+          34, Loop not fused: contains call
+              Loop not vectorized/parallelized: too deeply nested
+          42, Conditional removed
+              Outer loop unrolled 3 times (completely unrolled)
+          43, visc_force inlined, size=6 (IPA) file util.c (6)
+                9, Conditional removed
+                   Loop not fused: dependence chain to sibling loop
+                   Loop not fused: function call before adjacent loop
+                   Generated an alternate version of the loop
+                   Generated vector sse code for the loop
+                   Generated 2 prefetch instructions for the loop
+          53, wind_force inlined, size=25 (IPA) file util.c (15)
+               19, Conditional removed
+                   Loop not fused: function call before adjacent loop
+                   Loop not vectorized: data dependency
+               21, Conditional removed
+                   Loop unrolled 3 times (completely unrolled)
+          61, Conditional removed
+              Memory zero idiom, loop replaced by call to __c_mzero8
+          65, Conditional removed
+              Outer loop unrolled 3 times (completely unrolled)
+          66, add_norm inlined, size=6 (IPA) file util.c (32)
+               35, Conditional removed
+                   Loop not fused: dependence chain to sibling loop
+                   Loop not fused: function call before adjacent loop
+                   2 loops fused
+                   Generated an alternate version of the loop
+                   Generated vector sse code for the loop
+                   Generated 2 prefetch instructions for the loop
+          69, Conditional removed
+          78, Conditional removed
+              Outer loop unrolled 3 times (completely unrolled)
+          79, Conditional removed
+              Loop not fused: dependence chain to sibling loop
+              Loop not fused: function call before adjacent loop
+              Generated an alternate version of the loop
+              Generated vector sse code for the loop
+              Generated 4 prefetch instructions for the loop
+          81, force inlined, size=3 (IPA) file util.c (41)
+          92, Conditional removed
+              Loop not fused: function call before adjacent loop
+              Loop not vectorized/parallelized: loop count too small
+          94, Conditional removed
+              Loop not fused: complex flow graph
+          95, Loop not fused: complex flow graph
+              Generated 4 alternate versions of the loop
+              Generated vector sse code for the loop
+              Generated a prefetch instruction for the loop
+         107, Conditional removed
+              Memory zero idiom, loop replaced by call to __c_mzero8
+         110, Conditional removed
+              Outer loop unrolled 3 times (completely unrolled)
+         111, add_norm inlined, size=6 (IPA) file util.c (32)
+               35, Conditional removed
+                   Loop not fused: dependence chain to sibling loop
+                   Loop not fused: function call before adjacent loop
+                   2 loops fused
+                   Generated an alternate version of the loop
+                   Generated vector sse code for the loop
+                   Generated 2 prefetch instructions for the loop
+         113, Conditional removed
+         129, Conditional removed
+              Loop not fused: function call before adjacent loop
+              Loop not vectorized/parallelized: loop count too small
+         131, Conditional removed
+              Loop not fused: complex flow graph
+         132, Loop not fused: complex flow graph
+              Loop not vectorized: data dependency
+         133, force inlined, size=3 (IPA) file util.c (41)
+         158, Conditional removed
+              Outer loop unrolled 3 times (completely unrolled)
+         159, Conditional removed
+              Loop not fused: dependence chain to sibling loop
+              Loop not fused: function call before adjacent loop
+              Generated an alternate version of the loop
+              Generated vector sse code for the loop
+              Generated 4 prefetch instructions for the loop
+    107, second inlined, size=4 (IPA) file util.c (48)
+    115, second inlined, size=4 (IPA) file util.c (48)
+    125, Conditional removed
+         Loop not fused: contains call
+         Loop not vectorized/parallelized: contains call
+    133, second inlined, size=4 (IPA) file util.c (48)
+    137, second inlined, size=4 (IPA) file util.c (48)
+IPA: Recompiling util.o: stale object file
+visc_force:
+      0, Dummy argument converted to local variable
+         Dummy argument converted to local variable
+         IPA: The value of this argument is the constant 4096
+         IPA: This pointer may point to global variable visc with 0 indirections
+      6, IPA: 1 constant-valued arguments replaced
+         IPA: 2 constant-valued arguments removed
+         IPA: 1 conditional branches removed
+      9, Conditional removed
+         Generated an alternate version of the loop
+         Generated vector sse code for the loop
+         Generated 2 prefetch instructions for the loop
+wind_force:
+      0, Dummy argument converted to local variable
+         Dummy argument converted to local variable
+         Dummy argument converted to local variable
+         Dummy argument converted to local variable
+         Dummy argument converted to local variable
+         IPA: The value of this argument is the constant 4096
+         IPA: This pointer may point to global variable f with 0 indirections
+         IPA: This pointer may point to global variable visc with 0 indirections
+         IPA: This pointer may point to global variable pos with 0 indirections
+         IPA: This pointer may point to global variable P with 0 indirections
+     15, IPA: 1 constant-valued arguments replaced
+         IPA: 5 constant-valued arguments removed
+         IPA: 2 conditional branches removed
+     19, Conditional removed
+         Loop not vectorized: data dependency
+     21, Conditional removed
+         Loop unrolled 3 times (completely unrolled)
+add_norm:
+      0, IPA: The value of this argument lies between 4096 and 8386560
+         IPA: This pointer may point to global variable delta_r with 0 indirections
+         IPA: This pointer may point to global variable r with 0 indirections
+     32, IPA: 1 conditional branches removed
+     35, Conditional removed
+         Generated 3 alternate versions of the loop
+         Generated vector sse code for the loop
+         Generated 2 prefetch instructions for the loop

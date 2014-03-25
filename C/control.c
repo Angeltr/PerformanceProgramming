@@ -13,10 +13,10 @@
 #include "util.h"
 
 //double second(void);
- 
+
 int main(int argc, char *argv[]) {
 
-	int i,j;
+	int i,j,l;
 	FILE *in, *out;
 	double start,stop, tstart, tstop;
 	double inputTime;
@@ -24,6 +24,7 @@ int main(int argc, char *argv[]) {
 	double computationTime = 0;
 	double timing[9] = {0,0,0,0,0,0,0,0,0};
 	char name[80];
+
 
 	tstart = second();
 
@@ -44,7 +45,7 @@ int main(int argc, char *argv[]) {
 	P[Zcoord] = 8.0;
 
 	/* set up multi dimensional arrays */
-	r          = calloc(Nbody,sizeof(double));
+/*	r          = calloc(Nbody,sizeof(double));
 	delta_r    = calloc(Nbody*Nbody,sizeof(double));
 	mass       = calloc(Nbody,sizeof(double));
 	visc       = calloc(Nbody,sizeof(double));
@@ -59,6 +60,7 @@ int main(int argc, char *argv[]) {
 		vel[i]     = vel[0] + i * Nbody;
 		delta_x[i] = delta_x[0] + i*Nbody*Nbody;
 	}
+*/
 
 	/* read the initial data from a file */
 	start = second();
@@ -72,7 +74,7 @@ int main(int argc, char *argv[]) {
 	}
 
 	for (i = 0; i < Nbody; i++) {
-		fscanf(in,"%16le%16le%16le%16le%16le%16le%16le%16le\n",mass+i,visc+i,
+		fscanf(in,"%16le%16le%16le%16le%16le%16le%16le%16le\n",&mass[i], &visc[i],
 				&pos[Xcoord][i], &pos[Ycoord][i], &pos[Zcoord][i],
 				&vel[Xcoord][i], &vel[Ycoord][i], &vel[Zcoord][i]);
 	}
@@ -81,6 +83,17 @@ int main(int argc, char *argv[]) {
 	stop = second();
 
 	inputTime = stop - start;
+
+	for (i = 0; i < Ndim; i++) {
+		for (j = 0; j < Nbody; j++) {
+			f[i][j] = 0;
+			r[j] = 0;
+			for (l = 0; l < Nbody; l++) {
+				delta_x[i][j*Nbody+l] = 0;
+				delta_r[j*Nbody+l] = 0;
+			}
+		}
+	}
 
 	/*
 	 * Run Nstep timesteps and time how long it took
@@ -142,13 +155,13 @@ int main(int argc, char *argv[]) {
 
 
 /*
-double second()
-{
-	/* struct timeval { long        tv_sec; 
-	   long        tv_usec;        };
+   double second()
+   {
+/* struct timeval { long        tv_sec; 
+long        tv_usec;        };
 
-	   struct timezone { int   tz_minuteswest;
-	   int        tz_dsttime;      };     */
+struct timezone { int   tz_minuteswest;
+int        tz_dsttime;      };     */
 
 /*	struct timeval tp;
 	struct timezone tzp;
@@ -156,5 +169,5 @@ double second()
 
 	i = gettimeofday(&tp,&tzp);
 	return ( (double) tp.tv_sec + (double) tp.tv_usec * 1.e-6 );
-}*/
+	}*/
 

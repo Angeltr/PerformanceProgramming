@@ -1,9 +1,9 @@
-SRC=MD.c control.c util.c 
+SRC=MD_access.c control.c util.c 
 OBJ=$(SRC:.c=.o)
 CC=pgcc
-#CFLAGS= -O3 -fast -Mipa=fast,inline -Minfo=all -Mneginfo=all
+CFLAGS= -O3 -fast -Mipa=fast,inline  -Msafeptr -Mvect=altcode,assoc,fuse,gather,idiom,prefetch,sse,tile,uniform #-Minfo=all -Mneginfo=all
 
-CFLAGS = -O0
+#CFLAGS = -O0 
 
 
 all: MD

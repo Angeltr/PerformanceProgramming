@@ -12,14 +12,11 @@ void visc_force(int N, double *f, double *visc, double *vel) {
 }
 
 
-void wind_force(int N,double *f[3], double *visc, double *pos[3], double P[3]) {
+void wind_force(int N,double f[][Nbody], double visc[], double pos[][Nbody], double P[]) {
 	int i, j;
 	double r;
 
 	for (i = 0; i < N; i++) {
-		/* gas cloud rotating about axis with constant angular momentum per 
-		 * particle, 
-		 */
 		r = 0.0;
 		for (j = 0; j < 3; j++) {
 			r += pos[j][i] * pos[j][i];

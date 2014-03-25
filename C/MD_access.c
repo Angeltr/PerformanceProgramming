@@ -22,7 +22,6 @@
 #include "util.h"
 
 
-//void evolve(int count, double dt, double timing[]) {
 void evolve(int count, double dt, double timing[]) {
 	int step;
 	int i, j, k, l;
@@ -57,7 +56,6 @@ void evolve(int count, double dt, double timing[]) {
 
 		timing[1] += stop - start;
 
-
 		/* calculate distance from central mass */
 		start = second();
 		for (k = 0; k < Nbody; k++) {
@@ -74,7 +72,6 @@ void evolve(int count, double dt, double timing[]) {
 		stop = second();
 
 		timing[2] += stop - start;
-
 
 		/* calculate central force */
 		start = second();
@@ -123,36 +120,29 @@ void evolve(int count, double dt, double timing[]) {
 
 
 		int debug=0;
+		double temp;
 		/*
 		 * add pairwise forces.
 		 */
-		
-		start = second();
 		k = 0;
+		
 		for (l = 0; l < Ndim; l++) {
 			k = 0;	
 			for (i = 0; i < Nbody; i++) {
 				for (j = i+1; j < Nbody; j++, k++) {
-				
+					temp = force(G*mass[i]*mass[j], delta_x[l][k], delta_r[k]);
+		
 					if ( delta_r[k] >= Size ) {
-						f[l][i] = f[l][i] - 
-							force(G*mass[i]*mass[j], delta_x[l][k], delta_r[k]);
-						f[l][j] = f[l][j] + 
-							force(G*mass[i]*mass[j], delta_x[l][k], delta_r[k]);
-		//			printf("fli = %f, flj = %f\n", f[l][i], f[l][j]);
-			//			if(debug) printf("(i,j,l)=(%d,%d,%d) f[%d][%d],f[%d][%d] = m[%d], m[%d], d_x[%d][%d], d_r[%d] k=%d\n",i,j,l,l,i,l,j,i,j,l,k,k,k);
+						f[l][i] = f[l][i] - temp;
+						f[l][j] = f[l][j] + temp;
 					}
 					else {
-						f[l][i] = f[l][i] + 
-							force(G*mass[i]*mass[j], delta_x[l][k], delta_r[k]);
-						f[l][j] = f[l][j] - 
-							force(G*mass[i]*mass[j], delta_x[l][k], delta_r[k]);
+						f[l][i] = f[l][i] + temp;
+						f[l][j] = f[l][j] - temp;
 						collisions++;
 					}
 				}
-			if(debug) printf("\n");
 			}
-		if(debug)	printf("\n");
 		}
 		stop = second();
 

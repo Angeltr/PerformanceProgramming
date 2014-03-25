@@ -24,6 +24,7 @@
 
 enum{ Xcoord=0, Ycoord, Zcoord, Ndim };
       
+/*
 DEF double *pos[Ndim], *vel[Ndim];
 DEF double *f[Ndim], *visc, *mass;
 DEF double *delta_x[3];
@@ -31,6 +32,16 @@ DEF double *r;
 DEF double *delta_r;
 DEF double P[Ndim];
 DEF int collisions;
+*/
+
+DEF double pos[Ndim][Nbody], vel[Ndim][Nbody];
+DEF double f[Ndim][Nbody], visc[Nbody], mass[Nbody];
+DEF double delta_x[Ndim][Nbody*Nbody];
+DEF double r[Nbody];
+DEF double delta_r[Nbody*Nbody];
+DEF double P[Ndim];
+DEF int collisions;
+
 
 #define Size 1.0
 #define G 2.0
