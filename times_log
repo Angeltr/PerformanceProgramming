@@ -114,7 +114,7 @@ Final (-O3 -fast -Mipa=fast,inline):
 
 Total IO time = 0.811225 seconds
 Total computation time = 46.763395 seconds
-Total program time = 47.575426 seconds
+Total program time = 54 seconds
 
 
 _______________________________________________________________________________
@@ -130,5 +130,5 @@ _______________________________________________________________________________
 
 Total IO time = 0.695155 seconds
 Total computation time = 29.533747 seconds
-Total program time = 30.229711 seconds
+Total program time = 52 seconds
 
