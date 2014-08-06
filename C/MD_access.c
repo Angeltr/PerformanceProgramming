@@ -22,6 +22,26 @@
 #include "util.h"
 
 
+
+for (k=0; k<iter; k++) {
+	
+    /* z^2 = (a+bi)(a+bi) = a^2 + 2abi - b^2 */
+	newz = (z*z)-(zi*zi) + x;
+	newzi = 2*z*zi + y;
+    z = newz;
+    zi = newzi;
+    
+	if(((z*z)+(zi*zi)) > 4)
+	{
+	 inset = 0;
+	 colour = k;
+	 k = iter;
+	}
+}
+
+
+
+
 void evolve(int count, double dt, double timing[]) {
 	int step;
 	int i, j, k, l;
