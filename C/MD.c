@@ -23,26 +23,13 @@
 
 
 
-class phi_selector : public device_selector {
-
-public:
-
-        phi_selector() : device_selector() {}
-
-        int operator()(const device &device) const {
-
-
-                if (device.has_extension(strdup("cl_khr_spir"))) {
-
-                        if (device.get_info<CL_DEVICE_TYPE>() == CL_DEVICE_TYPE_ACCELERATOR) {
-                                return 1;
-                        }
-                }
-
-                return -1;
-        }
-
-};
+parallel_for(nd_range<>(range<>(), range<>()),
+                         kernel_functor<class kernel_name>([=](item item)
+                         {
+                           int i = item.get_global_id(0);
+                           
+			   /* kernel code */
+                  	  }));
 
 
 
