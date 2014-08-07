@@ -40,3 +40,26 @@ command_group(myQueue, [&]() {
         parallel_for(nd_range<>(range<>(), range<>()),
           kernel_functor(functor));
         });
+
+
+
+
+const char *kernel_src = R"EOK(
+  __kernel void foo(__global int *k) {
+  		int i = get_global_id(0);
+  		k[i] = i;
+  }
+)EOK";
+
+
+program foo_program(kernel_src, myQueue.get_context());
+
+kernel *foo_kernel = foo_program.compile_kernel_by_name("foo");
+
+    command_group(myQueue, [&]() {
+    	auto buf = input_buffer.get_access<access::write>();
+    	
+    	pow_kernel->set_kernel_arg(buf);
+
+    	parallel_for(nd_range<>(range<>()), foo_kernel);
+    });
