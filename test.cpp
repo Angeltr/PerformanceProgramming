@@ -27,3 +27,16 @@ class vadd {
   }
 
 };
+
+
+
+command_group(myQueue, [&]() {
+        auto a = d_a.get_access<access::read>();
+        auto b = d_b.get_access<access::read>();
+        auto c = d_c.get_access<access::read_write>();
+        
+        auto functor = vadd(a, b, c, N);
+       
+        parallel_for(nd_range<>(range<>(), range<>()),
+          kernel_functor(functor));
+        });
