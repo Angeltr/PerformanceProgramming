@@ -1,3 +1,29 @@
+
+class adderFunctor  {
+
+	int k;
+
+public:
+    adderFunctor(int arg) : k(arg) {};
+
+    int operator()(int l) {
+        return k+l;
+    }
+};
+
+
+int main(void) {
+
+    adderFunctor add5(5);
+
+    cout << add5(5) << endl;
+
+return 0;
+}
+
+
+
+
 template <class T>
 class vadd {
  
