@@ -1,4 +1,6 @@
 
+[ ]  ( )  -> T  { }
+
 class adderFunctor  {
 
 	int k;
