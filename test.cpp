@@ -22,6 +22,16 @@ return 0;
 }
 
 
+int main() {
+
+       vector<int> vec(10, 0);
+
+       transform(vec.begin(), vec.end(), vec.begin(), adderFunctor(5));
+
+return 0;
+}
+
+
 
 
 template <class T>
