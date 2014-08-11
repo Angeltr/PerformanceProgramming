@@ -1,143 +1,60 @@
+	cl_platform_id platform;
+ 	cl_device_id device;
+    cl_context context;
+    cl_command_queue command_queue;
+    cl_program program;
+    cl_kernel kernel_stencil, kernel_copy;
+    cl_mem d_a0;            // input
+    cl_mem d_a1;
 
-#include "SYCL/sycl.hpp"
-using namespace cl::sycl;
+    clGetPlatformIDs(1, &platform, &num_platforms);
+    clGetDeviceIDs(platform, CL_DEVICE_TYPE_ACCELERATOR, 1, &device, &num_devices);
+	context = clCreateContext(NULL, 1, &device, NULL, NULL, &err);
+    command_queue = clCreateCommandQueue(context, device, 0, &err);
 
-int main(void) {
-    int N = 16;
- 	int h_a[N];
- 	int h_b[N];
- 	int h_c[N];
-    for (int i = 0; i < N; i++) {
-        h_a[i] = h_b[i] = 1;
-        h_c[i] = 0;
-	}
+	fp = fopen("27stencil.cl", "r");
+    source_str = (char *) malloc(MAX_SOURCE_SIZE);
+    source_size = fread(source_str, 1, MAX_SOURCE_SIZE, fp);
+    fclose(fp);
 
-	{       // SYCL region starts here
-      queue myQueue;
-      // Device buffers
-      buffer<int, 1> d_a(h_a, N);
-      buffer<int, 1> d_b(h_b, N);
-      buffer<int, 1> d_c(h_c, N);
+    program = clCreateProgramWithSource(context, 1, (const char **) &source_str, (const size_t *) &source_size, &err);
+    err = clBuildProgram(program, 1, &device, "-I ../", NULL, NULL);
 
-      command_group(myQueue, [&]() {
-      	auto a = d_a.get_access<access::read>();
-        auto b = d_b.get_access<access::read>();
-        auto c = d_c.get_access<access::write>();
-        
-		parallel_for(nd_range<1>(range<1>(N)), kernel_functor<class vaddKernel>([=](item item)
-        {
-            int i = item.get_global_id(0);
-            if (i < N) {
-                c[i] = a[i] + b[i];
-            }
-        }));
-      });
-    }       // End of SYCL region
+	kernel_stencil = clCreateKernel(program, "stencil", &err);
+	kernel_copy = clCreateKernel(program, "copy", &err);
     
-return 0;
-}
-
-
-
-
-
-
-auto sum = [] (int a, int b) { return a+b; }
-
-class adderFunctor  {
-
-	int k;
-
-public:
-    adderFunctor(int arg) : k(arg) {};
-
-    int operator()(int l) {
-        return k+l;
-    }
-};
-
-
-int main(void) {
-
-    adderFunctor add5(5);
-
-    cout << add5(5) << endl;
-
-return 0;
-}
-
-
-int main(void) {
-       vector<int> vec(10, 0);
-       transform(vec.begin(), vec.end(), vec.begin(), adderFunctor(5));
-return 0;
-}
-
-
-
-
-template <class T>
-class vadd {
- 
- accessor<T, 1, access::read, access::global_buffer> a;
- accessor<T, 1, access::read, access::global_buffer> b;
- accessor<T, 1, access::write, access::global_buffer> c;
- 
- int size;
-
- public:
-  
-  vadd(
-       accessor<T, 1, access::read, access::global_buffer> A,
-       accessor<T, 1, access::read, access::global_buffer> B,
-       accessor<T, 1, access::write, access::global_buffer> C,
-       int N
-      )
-      : ptr(p), a(A), b(B), c(C), size(N) {}
-
-  
-  void operator()(item item) {
-    int i = item.get_global_id(0);
+    d_a0 = clCreateBuffer(context, CL_MEM_READ_ONLY, bytes, NULL, &ret);
+    d_a1 = clCreateBuffer(context, CL_MEM_WRITE_ONLY, bytes, NULL, &ret);
     
-    if (i < size) {
-      c[i] = a[i] + b[i];
-    }
-  }
+    clEnqueueWriteBuffer(command_queue, d_a0, CL_TRUE, 0, bytes, a0_init, 0, NULL, NULL);
+    
+    for (iter = 0; iter < ITERATIONS; iter++) {
 
-};
+        clSetKernelArg(kernel_compute, 0, bytes, &d_a0);
+        clSetKernelArg(kernel_compute, 1, bytes, &d_a1);
+        clSetKernelArg(kernel_compute, 2, sizeof(double), &fac);
+               
+		size_t global[3] = { n, n, n };
 
+        ret = clEnqueueNDRangeKernel(command_queue, kernel_compute, 3, NULL, global, NULL, 0, NULL, NULL);
+        clFinish(command_queue);
 
+		clSetKernelArg(kernel_copy, 0, bytes, &d_a0);
+        clSetKernelArg(kernel_copy, 1, bytes, &d_a1);
 
-command_group(myQueue, [&]() {
-        auto a = d_a.get_access<access::read>();
-        auto b = d_b.get_access<access::read>();
-        auto c = d_c.get_access<access::read_write>();
-        
-        auto functor = vadd(a, b, c, N);
-       
-        parallel_for(nd_range<>(range<>(), range<>()),
-          kernel_functor(functor));
-        });
+        clEnqueueNDRangeKernel(command_queue, kernel_copy, 3, NULL, global, NULL, 0, NULL, NULL);
+        clFinish(command_queue);
+    } // end iteration loop
 
-
-
-
-const char *kernel_src = R"EOK(
-  __kernel void foo(__global int *k) {
-  		int i = get_global_id(0);
-  		k[i] = i;
-  }
-)EOK";
-
-
-program foo_program(kernel_src, myQueue.get_context());
-
-kernel *foo_kernel = foo_program.compile_kernel_by_name("foo");
-
-    command_group(myQueue, [&]() {
-    	auto buf = input_buffer.get_access<access::write>();
-    	
-    	pow_kernel->set_kernel_arg(buf);
-
-    	parallel_for(nd_range<>(range<>()), foo_kernel);
-    });
+	ret = clEnqueueReadBuffer(command_queue, d_a0, CL_TRUE, 0, bytes, a1, 0, NULL, NULL);
+	
+    /* Free OpenCL resources */
+    clReleaseMemObject(d_a0);
+    clReleaseMemObject(d_a1);
+    clFlush(command_queue);
+    clFinish(command_queue);
+    clReleaseKernel(kernel_compute);
+    clReleaseKernel(kernel_copy);
+    clReleaseProgram(program);
+    clReleaseCommandQueue(command_queue);
+    clReleaseContext(context);
