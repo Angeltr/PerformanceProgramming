@@ -1,4 +1,47 @@
 
+#include "SYCL/sycl.hpp"
+using namespace cl::sycl;
+
+int main(void) {
+    int N = 16;
+ 	int h_a[N];
+ 	int h_b[N];
+ 	int h_c[N];
+    for (int i = 0; i < N; i++) {
+        h_a[i] = h_b[i] = 1;
+        h_c[i] = 0;
+	}
+
+	{       // SYCL region starts here
+      queue myQueue;
+      // Device buffers
+      buffer<int, 1> d_a(h_a, N);
+      buffer<int, 1> d_b(h_b, N);
+      buffer<int, 1> d_c(h_c, N);
+
+      command_group(myQueue, [&]() {
+      	auto a = d_a.get_access<access::read>();
+        auto b = d_b.get_access<access::read>();
+        auto c = d_c.get_access<access::write>();
+        
+		parallel_for(nd_range<1>(range<1>(N)), kernel_functor<class vaddKernel>([=](item item)
+        {
+            int i = item.get_global_id(0);
+            if (i < N) {
+                c[i] = a[i] + b[i];
+            }
+        }));
+      });
+    }       // End of SYCL region
+    
+return 0;
+}
+
+
+
+
+
+
 auto sum = [] (int a, int b) { return a+b; }
 
 class adderFunctor  {
