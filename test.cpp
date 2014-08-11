@@ -58,3 +58,39 @@
     clReleaseProgram(program);
     clReleaseCommandQueue(command_queue);
     clReleaseContext(context);
+
+
+
+__kernel void stencil(__global double *in, __global double *out, double fac) {
+
+  int i = get_global_id(0)+1;
+  int j = get_global_id(1)+1;
+  int k = get_global_id(2)+1;
+  int sz = get_global_size(0)+2;
+
+  out[i * sz * sz+j*sz+k] = (
+        in[i*sz*sz+(j-1)*sz+k] + in[i*sz*sz+(j+1)*sz+k] +
+        in[(i-1) * sz * sz+j*sz+k] + in[(i+1) * sz * sz+j*sz+k] +
+        in[(i-1)* sz * sz+(j-1) * sz+k] + in[(i-1) * sz * sz+(j+1)*sz+k] +
+        in[(i+1) * sz * sz+(j-1) * sz+k] + in[(i+1) * sz * sz+(j+1)*sz+k] +
+        in[i * sz * sz+(j-1) * sz+(k-1)] + in[i * sz * sz+(j+1) * sz+(k-1)] +
+        in[(i-1) * sz * sz+j * sz+(k-1)] + in[(i+1) * sz * sz+j* sz+(k-1)] +
+        in[(i-1) * sz * sz+(j-1) * sz+(k-1)] + in[(i-1) * sz * sz+(j+1) * sz+(k-1)] +
+        in[(i+1)*sz*sz+(j-1)*sz+(k-1)] + in[(i+1)*sz*sz+(j+1)*sz+(k-1)] +
+        in[i*sz*sz+(j-1)*sz+(k+1)] + in[i*sz*sz+(j+1)*sz+(k+1)] +
+        in[(i-1)*sz*sz+j*sz+(k+1)] + in[(i+1)*sz*sz+j*sz+(k+1)] +
+        in[(i-1)*sz*sz+(j-1)*sz+(k+1)] + in[(i-1)*sz*sz+(j+1)*sz+(k+1)] +
+        in[(i+1)*sz*sz+(j-1)*sz+(k+1)] + in[(i+1)*sz*sz+(j+1)*sz+(k+1)] +
+        in[i*sz*sz+j*sz+(k-1)] + in[i*sz*sz+j*sz+(k+1)]
+        ) * fac;
+}
+
+__kernel void copy(__global double *a0, __global double *a1) {
+
+  int i = get_global_id(0)+1;
+  int j = get_global_id(1)+1;
+  int k = get_global_id(2)+1;
+  int sz = get_global_size(0)+2;
+
+  a0[i*sz*sz+j*sz+k] = a1[i*sz*sz+j*sz+k];
+}
