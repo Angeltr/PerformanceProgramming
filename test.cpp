@@ -1,3 +1,11 @@
+int i = get_global_id(0);
+int j;
+
+for (j = 0; j < 10000; j++) {           
+        c[i] = a[i] + b[i];
+}
+
+
 	cl_platform_id platform;
  	cl_device_id device;
     cl_context context;
