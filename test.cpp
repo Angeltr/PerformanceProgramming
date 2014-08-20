@@ -20,6 +20,12 @@ int main(void) {
 return 0;
 }
 
+int main(void) {
+	vector<int> vec(10, 0);
+	transform(vec.begin(), vec.end(), vec.begin(), adderFunctor(5));
+return 0;
+}
+
 
 
 
