@@ -16,11 +16,14 @@ public:
 
 
 
-int i = get_global_id(0);
-int j;
+__kernel void large_kernel(__global int *a, __global int *b, __global int *c) {
 
-for (j = 0; j < 10000; j++) {           
-        c[i] = a[i] + b[i];
+	int i = get_global_id(0);
+	int j;
+
+	for (j = 0; j < 10000; j++) {           
+        	c[i] = a[i] + b[i];
+	}
 }
 
 
