@@ -27,6 +27,30 @@ return 0;
 }
 
 
+for (iter = 0; iter < ITERATIONS; iter++) {
+#pragma acc parallel loop
+      for (i = 1; i < n+1; i++) {
+#pragma acc loop
+        for (j = 1; j < n+1; j++) {
+#pragma acc loop
+          for (k = 1; k < n+1; k++) {
+            a1[i*sz*sz+j*sz+k] = /* Sum of 27 neighbouring points. */
+          }
+        }
+      }
+
+#pragma acc parallel loop
+      for (i = 1; i < n+1; i++) {
+#pragma acc loop
+        for (j = 1; j < n+1; j++) {
+#pragma acc loop
+          for (k = 1; k < n+1; k++) {
+            a0[i*sz*sz+j*sz+k] = a1[i*sz*sz+j*sz+k];
+          }
+        }
+      }
+} /* end iteration loop */
+
 
 
 	cl_platform_id platform;
