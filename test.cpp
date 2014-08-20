@@ -6,6 +6,23 @@ for (j = 0; j < 10000; j++) {
 }
 
 
+class adderFunctor {
+	int k;
+public:
+	adderFunctor(int kk) : k(kk) {};
+	int operator()(int l) {
+		return k+l;
+	}
+};
+int main(void) {
+	adderFunctor add5(5);
+	cout << add5(5) << endl;
+return 0;
+}
+
+
+
+
 	cl_platform_id platform;
  	cl_device_id device;
     cl_context context;
