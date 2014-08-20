@@ -52,6 +52,30 @@ for (iter = 0; iter < ITERATIONS; iter++) {
 } /* end iteration loop */
 
 
+double gosa, s0, ss;
+
+for(n=0;n<nn;++n){
+#pragma acc parallel loop private(i,j,k,s0,ss), reduction(+:gosa)
+      for(i=1 ; i<imax-1 ; ++i){
+	for(j=1 ; j<jmax-1 ; ++j){
+	  for(k=1 ; k<kmax-1 ; ++k){
+	    s0 = /* expression based on arrays a,b,c,wrk1,p. */
+	       
+	    ss = ( s0 * a[i][j][k][3] - p[i][j][k] ) * bnd[i][j][k];
+	    gosa = gosa + ss*ss;
+	    wrk2[i][j][k] = p[i][j][k] + omega * ss;
+	  }
+	}
+      }
+#pragma acc wait      
+#pragma acc parallel loop
+      for(i=1 ; i<imax-1 ; ++i)
+	for(j=1 ; j<jmax-1 ; ++j)
+	  for(k=1 ; k<kmax-1 ; ++k)
+	    p[i][j][k] = wrk2[i][j][k];
+} /* end n loop */
+
+
 
 	cl_platform_id platform;
  	cl_device_id device;
