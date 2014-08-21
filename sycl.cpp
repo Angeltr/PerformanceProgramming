@@ -1,3 +1,15 @@
+
+command_group(myQueue, [&]() {
+	auto a = d_a.get_access<access::read>();
+	auto b = d_b.get_access<access::read>();
+	auto c = d_c.get_access<access::write>();
+	
+	auto functor = vadd(a, b, c, N);
+	
+	parallel_for(nd_range<>(range<>(N)), kernel_functor(functor));
+});
+
+
 template <class T>
 class vadd {
 	accessor<T, 1, access::read, access::global_buffer> a;
