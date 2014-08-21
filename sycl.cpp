@@ -1,4 +1,12 @@
 
+const char *kernel_src = R"EOK(
+  __kernel void foo(__global int *k) {
+  	int i = get_global_id(0);
+  	k[i] = i;
+  }
+)EOK";
+
+
 command_group(myQueue, [&]() {
 	auto a = d_a.get_access<access::read>();
 	auto b = d_b.get_access<access::read>();
