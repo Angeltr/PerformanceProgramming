@@ -1,4 +1,28 @@
 
+{		// SYCL region start here
+	queue myQueue;
+	
+	buffer<int, 1> d_a(h_a, N);
+	buffer<int, 1> d_b(h_b, N);
+	buffer<int, 1> d_c(h_c, N);
+	
+	command_group(myQueue, [&]() {
+		auto a = d_a.get_access<access::read>();
+		auto b = d_b.get_access<access::read>();
+		auto c = d_c.get_access<access::write>();
+		
+		parallel_for(N, kernel_functor<class vaddKernel>([=](item item) {
+				int i = item.get_global_id(0);
+				if (i < N) {
+						c[i] = a[i] + b[i];
+				}
+		}));
+	});
+}		// End of SYCL region
+
+
+
+
 program foo_program(kernel_src, myQueue.get_context());
 
 kernel *foo_kernel = foo_program.compile_kernel_by_name("foo");
