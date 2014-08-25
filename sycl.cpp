@@ -21,6 +21,11 @@
 }		// End of SYCL region
 
 
+#pragma omp parallel for
+for (i = 0; i < N; i++) {
+	c[i] = a[i] + b[i];
+}
+
 
 
 program foo_program(kernel_src, myQueue.get_context());
